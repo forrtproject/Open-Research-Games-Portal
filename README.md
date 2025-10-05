@@ -26,7 +26,11 @@ Shinny App Available [here](https://forrtapps.shinyapps.io/open-research-games-p
 
 ### Prerequisites
 ```r
+# Required packages
 install.packages(c("shiny", "shinydashboard", "DT", "jsonlite", "dplyr"))
+
+# Optional: For Excel export functionality
+install.packages("openxlsx")
 ```
 
 ### Running the App
@@ -44,17 +48,3 @@ shiny::runApp()
 ```r
 source("Open-Research-Games-Portal.R")
 ```
-3. Restart the Shiny app to load new data
-
-## App Features
-
-### Games Portal Tab
-- Browse all games in card format
-- Search games by keywords
-- Filter by FORRT clusters
-- View game details in modal popups
-- Direct links to play games
-
-### Data Management Tab
-- View all games in a sortable table
-- Filter and search through the data

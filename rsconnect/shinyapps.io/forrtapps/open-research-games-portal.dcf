@@ -5,6 +5,6 @@ account: forrtapps
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 15662344
-bundleId: 10995347
+bundleId: 10995440
 url: https://forrtapps.shinyapps.io/open-research-games-portal/
 version: 1
