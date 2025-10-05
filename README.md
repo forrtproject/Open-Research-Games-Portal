@@ -1,22 +1,22 @@
 # Open Research Games Portal
 
-Welcome to the **Open Research Games Portal** - your gateway to learning open science through play! Our curated collection features **{{< games-count >}}** educational games that make complex research concepts accessible and engaging.
+Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features {{< games-count >}} educational games that make complex research concepts accessible and engaging.
 
-### ***Discover & Play***
+### Discover & Play
 
-🎮 **Interactive Learning**: Games that teach research methods, statistical thinking, and open science practices through hands-on experience.
+🎮 Interactive Learning: Games that teach research methods, statistical thinking, and open science practices through hands-on experience.
 
-🎯 **For Everyone**: From high school students to seasoned researchers, find games tailored to your learning level.
+🎯 For Everyone: From high school students to seasoned researchers, find games tailored to your learning level.
 
-🔬 **Evidence-Based**: Each game is designed with pedagogical principles and learning objectives in mind.
+🔬 Evidence-Based: Each game is designed with pedagogical principles and learning objectives in mind.
 
-### ***How to Use This Portal***
+### How to Use This Portal
 
-- **Browse**: Explore all games using the cards below
-- **Filter**: Use the FORRT cluster buttons to find games by topic
-- **Search**: Enter keywords to find specific games by title, gameplay, topics, or FORRT clusters
-- **Play**: Click "Play Now" to start gaming immediately
-- **Learn More**: Click "Details" to see comprehensive game information
+- Browse: Explore all games using the cards below
+- Filter: Use the FORRT cluster buttons to find games by topic
+- Search: Enter keywords to find specific games by title, gameplay, topics, or FORRT clusters
+- Play: Click "Play Now" to start gaming immediately
+- Learn More: Click "Details" to see comprehensive game information
 
 Ready to transform your understanding of open science? Let's play and learn together!
 
@@ -48,14 +48,12 @@ source("Open-Research-Games-Portal.R")
 ## App Features
 
 ### Games Portal Tab
-- **Browse all games** in card format
-- **Search games** by keywords
-- **Filter by FORRT clusters**
-- **View game details** in modal popups
-- **Direct links to play games**
+- Browse all games in card format
+- Search games by keywords
+- Filter by FORRT clusters
+- View game details in modal popups
+- Direct links to play games
 
 ### Data Management Tab
-- **View all games** in a sortable table
-- **Filter and search** through the data
-- **Export capabilities** (built into DT)
-
+- View all games in a sortable table
+- Filter and search through the data
