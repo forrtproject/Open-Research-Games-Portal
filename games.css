@@ -1,0 +1,85 @@
+/* Open Research Games Portal Shiny App Styles */
+
+/* Game Cards */
+.game-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    height: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: #007bff;
+}
+
+.game-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.game-card .card-text {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Play Now Button */
+.btn-play-now {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-play-now:hover {
+    background: linear-gradient(45deg, #218838, #1ea085);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Modal Styling */
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 95%;
+        margin: 1rem auto;
+    }
+    
+    .modal-body {
+        padding: 0.5rem;
+        max-height: 50vh;
+    }
+}
