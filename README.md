@@ -1,6 +1,6 @@
 # Open Research Games Portal
 
-Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features {{< games-count >}} educational games that make complex research concepts accessible and engaging.
+Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features 39 educational games that make complex research concepts accessible and engaging.
 
 ### Discover & Play
 
