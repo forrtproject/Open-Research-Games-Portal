@@ -237,9 +237,9 @@ ui <- dashboardPage(
                     target = "_blank",
                     icon("external-link-alt"), " Live App on Shinyapps.io"),
               br(),
-              tags$a(href = "https://github.com/forrtproject", 
+              tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal", 
                     target = "_blank",
-                    icon("github"), " FORRT Project on GitHub"),
+                    icon("github"), " FORRT Open-Research-Games-Portal on GitHub"),
               br(),
               "Ready to transform your understanding of open science? Let's play and learn together!"
             )
@@ -338,8 +338,8 @@ server <- function(input, output, session) {
       
       # Truncate description - handle NULL, NA, and empty values
       description <- if (!is.null(game$description) && !is.na(game$description) && 
-                        nchar(as.character(game$description)) > 120) {
-        paste0(substr(game$description, 1, 120), "...")
+                        nchar(as.character(game$description)) > 200) {
+        paste0(substr(game$description, 1, 200), "...")
       } else if (!is.null(game$description) && !is.na(game$description) && 
                  nchar(as.character(game$description)) > 0) {
         as.character(game$description)
