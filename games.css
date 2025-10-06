@@ -1,4 +1,175 @@
-/* Open Research Games Portal Shiny App Styles */
+/* Open Research Games Portal  */
+
+body {
+    background: #f5f7fa;
+    padding-top: 140px !important;
+}
+/* =========================
+   LAYOUT & NAVIGATION
+   ========================= */
+
+/* Navbar styling - Beautiful centered design */
+.navbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    min-height: 60px;
+    padding: 0;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-default {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none;
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+}
+
+.navbar-fixed-top {
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+}
+
+/* Center navbar brand (title) */
+.navbar-header {
+    float: none !important;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.navbar-brand {
+    display: block !important;
+    float: none !important;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff !important;
+    padding: 15px 20px 10px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    width: auto;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: #f0f0f0 !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Center navbar items */
+.navbar-nav {
+    float: none !important;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.navbar-collapse {
+    text-align: center;
+    width: 100%;
+}
+
+/* Ensure proper stacking */
+.navbar > .container-fluid .navbar-header {
+    margin: 0;
+}
+
+.navbar > .container-fluid {
+    text-align: center;
+}
+
+.navbar-right {
+    float: none !important;
+    margin: 0 auto;
+}
+
+/* Style navigation links */
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 18px 25px;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-bottom: 3px solid #ffffff;
+}
+
+.navbar-default .navbar-nav > li.active > a,
+.navbar-default .navbar-nav > li.active > a:hover,
+.navbar-default .navbar-nav > li.active > a:focus {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    border-bottom: 3px solid #ffffff;
+}
+
+/* Icon spacing in nav items */
+.navbar-nav > li > a > i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+/* Mobile toggle button */
+.navbar-toggle {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+/* Center and constrain content width */
+.container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+}
+
+
+
+/* Responsive padding for mobile */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 18px;
+        padding: 15px;
+    }
+    
+    .navbar-default .navbar-nav > li > a {
+        text-align: center;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+    
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li.active > a {
+        border-left: 3px solid #ffffff;
+    }
+}
 
 /* =========================
    GAME CARDS 
@@ -8,7 +179,20 @@
 .games-grid {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -10px;
+    margin: 30px -10px 40px;
+    padding-top: 20px;
+}
+
+/* Games container spacing */
+#games-container {
+    margin-bottom: 40px !important;
+}
+
+/* Add spacing to card columns */
+.games-grid > [class*="col-"] {
+    margin-bottom: 30px !important;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Card Container */
@@ -76,19 +260,19 @@
 
 .game-card-title {
     color: #ffffff;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     font-weight: 700;
     margin: 0;
     line-height: 1.4;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     position: relative;
     z-index: 1;
 }
 
 .game-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
     opacity: 0.9;
     flex-shrink: 0;
 }
@@ -99,49 +283,73 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    font-size: 1.5rem !important;
+}
+
+/* Force font size on all elements in card body */
+.game-card-body * {
+    font-size: inherit !important;
 }
 
 .game-description {
     color: #495057;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 1.5rem !important;
+    line-height: 1.7;
     margin-bottom: 20px;
     min-height: 60px;
+}
+
+/* Force all paragraph text in description */
+p.game-description {
+    font-size: 1.5rem !important;
 }
 
 /* Metadata Section */
 .game-metadata {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     margin-top: auto;
 }
 
 .metadata-item {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
-    font-size: 0.875rem;
-    line-height: 1.4;
+    gap: 12px;
+    font-size: 1.5rem !important;
+    line-height: 1.5;
+}
+
+.metadata-item * {
+    font-size: 1.5rem !important;
 }
 
 .metadata-icon {
-    color: #667eea;
-    font-size: 1rem;
+    color: #667eea !important;
+    font-size: 1.5rem !important;
     margin-top: 2px;
     flex-shrink: 0;
+}
+
+/* Target FontAwesome icons specifically */
+.metadata-icon.fa,
+.metadata-icon.fas,
+i.metadata-icon {
+    font-size: 1.5rem !important;
 }
 
 .metadata-label {
     font-weight: 600;
     color: #6c757d;
-    min-width: 75px;
+    min-width: 90px;
     flex-shrink: 0;
+    font-size: 1.5rem !important;
 }
 
 .metadata-value {
     color: #495057;
     flex: 1;
+    font-size: 1.5rem !important;
 }
 
 /* Card Footer */
@@ -160,20 +368,28 @@
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 14px 28px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.5rem !important;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     transition: all 0.3s ease;
     cursor: pointer;
     flex: 1;
     justify-content: center;
     position: relative;
     overflow: hidden;
+}
+
+.btn-play * {
+    font-size: 1.5rem !important;
+}
+
+a.btn-play {
+    font-size: 1.5rem !important;
 }
 
 .btn-play::before {
@@ -223,17 +439,25 @@
     background: white;
     color: #667eea;
     border: 2px solid #667eea;
-    padding: 10px 20px;
+    padding: 14px 28px;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.5rem !important;
     transition: all 0.3s ease;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     flex: 1;
     justify-content: center;
+}
+
+.btn-details * {
+    font-size: 1.5rem !important;
+}
+
+button.btn-details {
+    font-size: 1.5rem !important;
 }
 
 .btn-details:hover {
@@ -267,7 +491,7 @@
 
 .modal-title {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     color: #333;
 }
 
@@ -360,7 +584,7 @@
     margin-bottom: 5px;
 }
 
-/* Box styling improvements */
+/* Box styling  */
 .box {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     border-radius: 8px;
@@ -396,11 +620,11 @@ a:hover {
 /* Large Tablets and Small Desktops (1200px - 1399px) */
 @media (max-width: 1399px) {
     .game-card-title {
-        font-size: 1.15rem;
+        font-size: 1.5rem;
     }
     
     .game-description {
-        font-size: 0.9rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -415,7 +639,7 @@ a:hover {
     }
     
     .game-card-title {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
     
     .game-card-body {

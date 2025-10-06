@@ -23,35 +23,25 @@ games_df <- bind_rows(lapply(names(games_data), function(slug) {
 }))
 
 # UI
-ui <- dashboardPage(
-  dashboardHeader(title = "Open Research Games Portal"),
+ui <- navbarPage(
+  title = "FORRT Open Research Games Portal",
   
-  dashboardSidebar(
-    sidebarMenu(
-      menuItem("Games Portal", tabName = "portal", icon = icon("gamepad")),
-      menuItem("Data Management", tabName = "data", icon = icon("database")),
-      menuItem("About", tabName = "about", icon = icon("info-circle"))
-    )
-  ),
-  
-  dashboardBody(
+  # Games Portal Tab
+  tabPanel(
+    title = tagList(icon("gamepad"), "Games Portal"),
+    value = "portal",
     includeCSS("games.css"),
-    
-    tabItems(
-      # Games Portal Tab
-      tabItem(tabName = "portal",
         fluidRow(
           box(
             width = 12,
             status = "primary",
             solidHeader = TRUE,
-            title = tagList(icon("gamepad"), " Open Research Games Portal"),
             p(style = "font-size: 16px; margin-bottom: 20px;",
               "Discover ", strong(paste0(nrow(games_df), " educational games")), 
               " that teach open science practices through interactive gameplay."
             ),
             
-            # Enhanced Search and Filter Section
+            #  Search and Filter Section
             fluidRow(
               column(4,
                 div(style = "margin-bottom: 15px;",
@@ -91,7 +81,7 @@ ui <- dashboardPage(
               )
             ),
             
-            hr(),
+            # hr(),
             
             # Games Display
             div(id = "games-container",
@@ -99,16 +89,17 @@ ui <- dashboardPage(
             )
           )
         )
-      ),
-      
-      # Data Management Tab
-      tabItem(tabName = "data",
+  ),
+  
+  # Data Management Tab
+  tabPanel(
+    title = tagList(icon("database"), "Data Management"),
+    value = "data",
         fluidRow(
           box(
             width = 12,
             status = "info",
             solidHeader = TRUE,
-            title = tagList(icon("database"), " Games Data Management"),
             p(style = "font-size: 16px;",
               "View, search, and export the complete games database."
             ),
@@ -135,17 +126,17 @@ ui <- dashboardPage(
             DT::dataTableOutput("games_table")
           )
         )
-      ),
-      
-      # About Tab
-      tabItem(tabName = "about",
+  ),
+  
+  # About Tab
+  tabPanel(
+    title = tagList(icon("info-circle"), "About"),
+    value = "about",
         fluidRow(
           box(
             width = 12,
             status = "success",
             solidHeader = TRUE,
-            title = tagList(icon("info-circle"), " About This Portal"),
-            
             h3(icon("lightbulb"), " Welcome to the Open Research Games Portal"),
             p(style = "font-size: 16px;",
               "Your gateway to learning open science through play! Our curated collection features ",
@@ -245,8 +236,6 @@ ui <- dashboardPage(
             )
           )
         )
-      )
-    )
   )
 )
 
@@ -335,6 +324,7 @@ server <- function(input, output, session) {
     
     cards <- lapply(seq_len(nrow(games)), function(i) {
       game <- games[i, ]
+      game_id <- if (!is.null(game$slug)) game$slug else paste0("game_", i)
       
       # Truncate description - handle NULL, NA, and empty values
       description <- if (!is.null(game$description) && !is.na(game$description) && 
@@ -358,16 +348,16 @@ server <- function(input, output, session) {
           ),
           
           # Card body
-          div(class = "game-card-body",
+          div(class = "game-card-body", style = "font-size: 1.5rem;",
             # Description
-            p(class = "game-description", description),
+            p(class = "game-description", style = "font-size: 1.15rem;", description),
             
             # Game metadata with icons
             div(class = "game-metadata",
-              div(class = "metadata-item",
+              div(class = "metadata-item", style = "font-size: 1.5rem;",
                 icon("puzzle-piece", class = "metadata-icon"),
-                tags$span(class = "metadata-label", "Gameplay:"),
-                tags$span(class = "metadata-value", 
+                tags$span(class = "metadata-label", style = "font-size: 1.5rem;", "Gameplay:"),
+                tags$span(class = "metadata-value", style = "font-size: 1.5rem;", 
                   if (!is.null(game$gameplay_style) && !is.na(game$gameplay_style)) {
                     as.character(game$gameplay_style)
                   } else {
@@ -375,10 +365,10 @@ server <- function(input, output, session) {
                   }
                 )
               ),
-              div(class = "metadata-item",
+              div(class = "metadata-item", style = "font-size: 1.5rem;",
                 icon("clock", class = "metadata-icon"),
-                tags$span(class = "metadata-label", "Playtime:"),
-                tags$span(class = "metadata-value", 
+                tags$span(class = "metadata-label", style = "font-size: 1.5rem;", "Playtime:"),
+                tags$span(class = "metadata-value", style = "font-size: 1.5rem;", 
                   if (!is.null(game$playtime) && !is.na(game$playtime)) {
                     as.character(game$playtime)
                   } else {
@@ -386,10 +376,10 @@ server <- function(input, output, session) {
                   }
                 )
               ),
-              div(class = "metadata-item",
+              div(class = "metadata-item", style = "font-size: 1.5rem;",
                 icon("globe", class = "metadata-icon"),
-                tags$span(class = "metadata-label", "Language:"),
-                tags$span(class = "metadata-value", 
+                tags$span(class = "metadata-label", style = "font-size: 1.5rem;", "Language:"),
+                tags$span(class = "metadata-value", style = "font-size: 1.5rem;", 
                   if (!is.null(game$language) && !is.na(game$language)) {
                     as.character(game$language)
                   } else {
@@ -397,10 +387,10 @@ server <- function(input, output, session) {
                   }
                 )
               ),
-              div(class = "metadata-item",
+              div(class = "metadata-item", style = "font-size: 1.5rem;",
                 icon("book", class = "metadata-icon"),
-                tags$span(class = "metadata-label", "Topics:"),
-                tags$span(class = "metadata-value", 
+                tags$span(class = "metadata-label", style = "font-size: 1.5rem;", "Topics:"),
+                tags$span(class = "metadata-value", style = "font-size: 1.5rem;", 
                   if (!is.null(game$topic_area) && !is.na(game$topic_area) && 
                       nchar(as.character(game$topic_area)) > 40) {
                     paste0(substr(game$topic_area, 1, 40), "...")
@@ -421,6 +411,7 @@ server <- function(input, output, session) {
               a(href = as.character(game$access), 
                 target = "_blank", 
                 class = "btn-play",
+                style = "font-size: 1.5rem;",
                 icon("play-circle"), 
                 " Play Now"
               )
@@ -431,9 +422,10 @@ server <- function(input, output, session) {
               )
             },
             actionButton(
-              paste0("details_", i), 
+              paste0("details_", game_id), 
               tagList(icon("info-circle"), " Details"),
-              class = "btn-details"
+              class = "btn-details",
+              style = "font-size: 1.5rem;"
             )
           )
         )
@@ -443,76 +435,79 @@ server <- function(input, output, session) {
     div(class = "row games-grid", cards)
   })
   
-  # Handle details button clicks
-  observe({
-    games <- filtered_games()
-    
-    for (i in seq_len(nrow(games))) {
-      local({
-        my_i <- i
-        observeEvent(input[[paste0("details_", my_i)]], {
-          game <- games[my_i, ]
+  # Handle details button clicks - use observeEvent for each game slug
+  lapply(seq_len(nrow(games_df)), function(i) {
+    local({
+      game <- games_df[i, ]
+      game_id <- if (!is.null(game$slug)) game$slug else paste0("game_", i)
+      
+      observeEvent(input[[paste0("details_", game_id)]], {
+        # Look up the game from the full dataset by slug
+        game_data <- games_df[i, ]
+        
+        showModal(modalDialog(
+          title = game_data$title,
           
-          showModal(modalDialog(
-            title = game$title,
-            
-            h4("Description"),
-            p(game$description),
-            
-            h4("Game Details"),
-            div(class = "row",
-              div(class = "col-md-6",
-                p(strong("Creator(s): "), game$creators),
-                p(strong("Gameplay: "), game$gameplay_style),
-                p(strong("Game Type: "), game$game_type),
-                p(strong("Playtime: "), game$playtime),
-                p(strong("Language: "), game$language)
-              ),
-              div(class = "col-md-6",
-                p(strong("Target Audience: "), game$target_audience),
-                p(strong("Format: "), game$delivery_format),
-                p(strong("Players: "), game$number_of_players),
-                p(strong("License: "), game$licence),
-                p(strong("Prerequisites: "), game$prior_knowledge)
-              )
+          h4("Description"),
+          p(game_data$description),
+          
+          h4("Game Details"),
+          div(class = "row",
+            div(class = "col-md-6",
+              p(strong("Creator(s): "), game_data$creators),
+              p(strong("Gameplay: "), game_data$gameplay_style),
+              p(strong("Game Type: "), game_data$game_type),
+              p(strong("Playtime: "), game_data$playtime),
+              p(strong("Language: "), game_data$language)
             ),
-            
-            if (!is.null(game$learning_objectives) && game$learning_objectives != "") {
-              div(
-                h4("Learning Objectives"),
-                p(game$learning_objectives)
-              )
+            div(class = "col-md-6",
+              p(strong("Target Audience: "), game_data$target_audience),
+              p(strong("Format: "), game_data$delivery_format),
+              p(strong("Players: "), game_data$number_of_players),
+              p(strong("License: "), game_data$licence),
+              p(strong("Prerequisites: "), game_data$prior_knowledge)
+            )
+          ),
+          
+          if (!is.null(game_data$learning_objectives) && !is.na(game_data$learning_objectives) && 
+              nchar(as.character(game_data$learning_objectives)) > 0) {
+            div(
+              h4("Learning Objectives"),
+              p(game_data$learning_objectives)
+            )
+          },
+          
+          if (!is.null(game_data$teaching_integration) && !is.na(game_data$teaching_integration) && 
+              nchar(as.character(game_data$teaching_integration)) > 0) {
+            div(
+              h4("Teaching Integration"),
+              p(game_data$teaching_integration)
+            )
+          },
+          
+          if (!is.null(game_data$testimonials) && !is.na(game_data$testimonials) && 
+              nchar(as.character(game_data$testimonials)) > 0) {
+            div(
+              h4("Testimonials"),
+              tags$em(p(game_data$testimonials))
+            )
+          },
+          
+          footer = tagList(
+            if (!is.null(game_data$access) && !is.na(game_data$access) && 
+                nchar(as.character(game_data$access)) > 0) {
+              a(href = game_data$access, target = "_blank", 
+                class = "btn btn-success",
+                icon("play"), " Play This Game")
             },
-            
-            if (!is.null(game$teaching_integration) && game$teaching_integration != "") {
-              div(
-                h4("Teaching Integration"),
-                p(game$teaching_integration)
-              )
-            },
-            
-            if (!is.null(game$testimonials) && game$testimonials != "") {
-              div(
-                h4("Testimonials"),
-                tags$em(p(game$testimonials))
-              )
-            },
-            
-            footer = tagList(
-              if (!is.null(game$access) && game$access != "") {
-                a(href = game$access, target = "_blank", 
-                  class = "btn btn-success",
-                  icon("play"), " Play This Game")
-              },
-              modalButton("Close")
-            ),
-            
-            size = "l",
-            easyClose = TRUE
-          ))
-        })
-      })
-    }
+            modalButton("Close")
+          ),
+          
+          size = "l",
+          easyClose = TRUE
+        ))
+      }, ignoreInit = TRUE)
+    })
   })
   
   # Data table for management
