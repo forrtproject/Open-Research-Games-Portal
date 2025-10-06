@@ -2,6 +2,7 @@
   "lego-metadata-for-reproducibility-id-001": {
     "unique_id": "ID-001",
     "title": "LEGO® Metadata for Reproducibility",
+    "description": "This is a set of resources for the LEGO® Metadata for Reproducibility game. The LEGO® Metadata for Reproducibility game is an interactive game for 4-24 players, using LEGO® to help researchers explore the metadata they might need to record to aid reproducibility. The game addresses issues including planning for metadata, formats of metadata recording, standards and automation. The game also draws multiple parallels between recording and communicating the research process and documenting and the creation of a LEGO® model. The process of playing the game draws researchers into discussions on how metadata is captured, recorded and disseminated, which in turn provides an opportunity for signposting to further resources in this area.",
     "access": "https://eprints.gla.ac.uk/196477/",
     "delivery_format": "In-person",
     "game_type": "Building with lego - construction",

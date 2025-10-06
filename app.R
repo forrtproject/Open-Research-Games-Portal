@@ -23,8 +23,39 @@ games_df <- bind_rows(lapply(names(games_data), function(slug) {
 }))
 
 # UI
-ui <- navbarPage(
-  title = "FORRT Open Research Games Portal",
+ui <- tagList(
+  # Add scroll to top button and JavaScript
+  tags$head(
+    tags$script(HTML("
+      $(document).ready(function() {
+        // Show/hide scroll to top button
+        $(window).scroll(function() {
+          if ($(this).scrollTop() > 300) {
+            $('#scrollToTop').fadeIn();
+          } else {
+            $('#scrollToTop').fadeOut();
+          }
+        });
+        
+        // Smooth scroll to top
+        $('#scrollToTop').click(function() {
+          $('html, body').animate({scrollTop: 0}, 600);
+          return false;
+        });
+      });
+    "))
+  ),
+  
+  # Scroll to top button (outside navbar)
+  tags$button(
+    id = "scrollToTop",
+    class = "scroll-to-top",
+    icon("arrow-up"),
+    title = "Back to Top"
+  ),
+  
+  navbarPage(
+    title = "FORRT Open Research Games Portal",
   
   # Games Portal Tab
   tabPanel(
@@ -236,6 +267,7 @@ ui <- navbarPage(
             )
           )
         )
+  )
   )
 )
 
