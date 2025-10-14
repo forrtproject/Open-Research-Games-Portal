@@ -29,8 +29,6 @@ Shinny App Available [here](https://forrtapps.shinyapps.io/open-research-games-p
 # Required packages
 install.packages(c("shiny", "shinydashboard", "DT", "jsonlite", "dplyr"))
 
-# Optional: For Excel export functionality
-install.packages("openxlsx")
 ```
 
 ### Running the App
@@ -48,3 +46,6 @@ shiny::runApp()
 ```r
 source("Open-Research-Games-Portal.R")
 ```
+For more information, contact **[info@forrt.org](mailto:info@forrt.org)**.  
+
+This work is part of the **[Framework for Open and Reproducible Research Training (FORRT) Project](https://forrt.org)**.
