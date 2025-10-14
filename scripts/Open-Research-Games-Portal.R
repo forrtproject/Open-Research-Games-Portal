@@ -1,3 +1,4 @@
+# Libraries
 library(readxl)
 library(dplyr)
 library(tidyr)
@@ -15,10 +16,10 @@ google_sheet_csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5Rj
 # Try different methods to read the data
 df_combined <- NULL
 
-# Method 1: Try CSV export first (most reliable for public sheets)
+# CSV export (most reliable)
 cat("Attempting to read from CSV export (TEST sheet)...\n")
 tryCatch({
-  # Use the provided gid=610093275 for the TEST sheet
+  # TEST sheet
   test_csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/pub?gid=610093275&single=true&output=csv"
   df_combined <- read.csv(test_csv_url, stringsAsFactors = FALSE)
   cat("Successfully read", nrow(df_combined), "rows and", ncol(df_combined), "columns from CSV export (TEST sheet)\n")
@@ -27,7 +28,7 @@ tryCatch({
   cat("CSV export failed:", e$message, "\n")
 })
 
-# Method 2: Try Google Sheets API without authentication (if CSV failed)
+# Google Sheets API without authentication (if CSV failed)
 if (is.null(df_combined)) {
   cat("Attempting to read from Google Sheets API without authentication (TEST sheet)...\n")
   tryCatch({
@@ -39,7 +40,7 @@ if (is.null(df_combined)) {
   })
 }
 
-# Method 3: If both failed, stop with helpful message
+# If both failed, stop with helpful message
 if (is.null(df_combined)) {
   cat("\n")
   cat(paste(rep("=", 50), collapse = ""))
@@ -48,7 +49,7 @@ if (is.null(df_combined)) {
   cat(paste(rep("=", 50), collapse = ""))
   cat("\n")
   cat("Solutions:\n")
-  cat("1. Make your Google Sheet public:\n")
+  cat("1. Make the Google Sheet public:\n")
   cat("   - Open the sheet\n")
   cat("   - Click Share > Anyone with the link > Viewer\n")
   cat("2. Or download as CSV and use local file\n")

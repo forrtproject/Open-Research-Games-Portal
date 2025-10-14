@@ -1,3 +1,4 @@
+# Libraries
 library(shiny)
 library(shinydashboard)
 library(DT)
@@ -58,7 +59,7 @@ games_df <- bind_rows(lapply(names(games_data), function(slug) {
 
 # UI
 ui <- tagList(
-  # Add scroll to top button and JavaScript
+  # scroll to top button functionality
   tags$head(
     tags$script(HTML("
       $(document).ready(function() {
@@ -78,7 +79,7 @@ ui <- tagList(
         });
       });
     ")),
-    # Add CSS for better formatting
+    # preserve line breaks in descriptions and metadata
     tags$style(HTML("
       .game-description, .game-metadata, .metadata-item, .game-card-body {
         white-space: pre-wrap; /* Preserve line breaks */
@@ -179,7 +180,7 @@ ui <- tagList(
         )
       ),
       tags$iframe(
-        src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/pubhtml?widget=true&headers=false",
+        src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/pubhtml?widget=true&amp;headers=false",
         style = "border:none; width:100%; height:80vh;"
       )
     ),
@@ -242,6 +243,7 @@ ui <- tagList(
           
           h4(icon("chart-bar"), " Portal Statistics"),
           fluidRow(
+            style = "margin-bottom: 20px; text-align: center; padding: 10px;",
             column(3,
                    valueBox(
                      value = nrow(games_df),
@@ -275,25 +277,37 @@ ui <- tagList(
                    )
             )
           ),
-          
-          hr(),
-          
-          h4(icon("link"), " Links & Resources"),
-          p(
-            tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/", 
-                   target = "_blank",
-                   icon("external-link-alt"), " Live App on Shinyapps.io"),
-            br(),
-            tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal", 
-                   target = "_blank",
-                   icon("github"), " FORRT Open-Research-Games-Portal on GitHub"),
-            br(),
-            "Ready to transform your understanding of open science? Let's play and learn together!"
-          )
         )
       )
     )
-  )
+  ),
+          footer = div (
+                        
+            div(
+                class = "about-footer",
+                style = "display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px; margin: 0 auto 0 auto; padding: 0px 10px 10px 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
+                h4(icon("link"), " Links & Resources"),
+              
+                tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/", 
+                      target = "_blank",
+                      icon("external-link-alt"), " Live App"),
+                tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal", 
+                      target = "_blank",
+                      icon("github"), " GitHub"),
+                tags$a(href = "mailto:info@forrt.org", 
+                      target = "_blank",
+                      icon("phone"), "Email"),
+                tags$a(href = "https://forrt.org", 
+                      target = "_blank",
+                      "FORRT Project"),
+                tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ", 
+                      target = "_blank",
+                      "Slack")
+            ),
+              p(style = "font-size: 12px; color: gray; display: block; text-align: center; padding:10px;",
+              "© 2024 FORRT Project. All rights reserved." ), 
+          )
+
 )
 
 # Server
