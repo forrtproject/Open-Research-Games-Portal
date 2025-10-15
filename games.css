@@ -156,7 +156,8 @@ body {
     
     .navbar-brand {
         font-size: 18px;
-        padding: 15px;
+        padding: 10px;
+        margin: 10px auto;
     }
     
     .navbar-default .navbar-nav > li > a {
@@ -579,7 +580,7 @@ button.btn-details {
     color: #212529;
 }
 
-/* Download buttons */
+/*  buttons */
 .btn-success {
     margin-bottom: 5px;
 }
