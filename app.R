@@ -217,11 +217,24 @@ ui <- tagList(
           width = 12,
           status = "success",
           solidHeader = TRUE,
-          h3(icon("lightbulb"), " Welcome to the Open Research Games Portal"),
+          h3(icon("lightbulb"), " Welcome to the Open Research Games Portal "),
           p(style = "font-size: 16px;",
-            "Your gateway to learning open science through play! Our curated collection features ", # nolint
-            strong(paste0(nrow(games_df), " educational games")), 
-            " that make complex research concepts accessible and engaging."
+            "The Open Research Games Portal is a crowdsourced database of games and interactive activities for teaching open and reproducible research practices. 
+            We recognize that game-based learning makes complex topics more accessible and engaging for students, researchers, educators, and professionals alike. ", # nolint
+            br(),
+            "The Portal provides detailed information on each game (see the Field Guide below), 
+            including pedagogical guidance, user experiences, preparation requirements, and access information, 
+            to help you find the right game for your teaching context. 
+            Whether you need a lighthearted icebreaker or a learning-intensive curriculum component, 
+            you can search by topic, gameplay style, audience, and more. ",
+            br(),
+            " This is a community resource: anyone can contribute ",
+            tags$a(href = "https://forms.gle/PXYBrRhXGiZyi8M99",
+                 "by adding new games", target = "_blank", rel = "noopener noreferrer"),
+            " or ",
+            tags$a(href = "https://forms.gle/MSBWR87GchDo8fED7",
+                 "by sharing their experiences with existing ones", target = "_blank", rel = "noopener noreferrer"),
+            "."
           ),
           hr(),
           # Key Features
@@ -241,26 +254,79 @@ ui <- tagList(
                  find games tailored 
                   to your learning level.")
               )
-            ),
-            column(4,
-              div(class = "info-box",
-                h4(icon("graduation-cap"), " Evidence-Based"),
-                p("Each game is designed with 
-                pedagogical principles and learning 
-                  objectives in mind.")
-              )
             )
           ),
-          hr(),
           # How to Use
           h4(icon("compass"), " How to Use This Portal"),
-          tags$ul(
+            tags$ul(
             tags$li(strong("Browse:"), " Explore all games using the interactive cards"), # nolint
             tags$li(strong("Filter:"), " Use FORRT cluster and gameplay style filters to find relevant games"), # nolint
             tags$li(strong("Search:"), " Enter keywords to find specific games by title, topics, or content"), # nolint
             tags$li(strong("Play:"), " Click 'Play Now' to start gaming immediately"), # nolint
             tags$li(strong("Learn More:"), " Click 'Details' to see comprehensive game information"), # nolint
-            tags$li(strong("Export:"), " Download the complete database from the Data Management tab") # nolint
+            tags$li(strong("Export:"), " Download the complete database from the ", 
+                tags$a(href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing", 
+                     "Google Sheet Portal", target = "_blank")) # nolint
+            )
+          ),
+          h2(icon("book"), " Open Research Games Portal - Field Guide"),
+          p(tags$a(
+            href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing",
+            "This guide explains what information you'll find for each game in the Portal and how it was collected. In the Google Sheets version of the Portal, you can see the exact phrasing of the questions under the 'Codebook' tab.",
+            target = "_blank",
+            rel = "noopener noreferrer"
+          )),
+          h4("Basic Information"),
+          tags$ul(
+            tags$li(strong("Title -"), " The official name of the game"),
+            tags$li(strong("Creators -"), " The individuals or organizations who developed the game"),
+            tags$li(strong("Description -"), " An overview of the game's content and purpose, typically using the official description provided by the creators"),
+            tags$li(strong("Access -"), " Where to find or purchase the game, including links to open-source versions when available"),
+            tags$li(strong("Last Updated -"), " The year the game was most recently updated (helps assess whether content might be outdated)"),
+            tags$li(strong("Language -"), " Languages in which the game is available (English, French, German, Spanish, Portuguese, and others)"),
+            tags$li(strong("License -"), " The game's licensing terms (e.g., Creative Commons, commercial license, or unknown status)")
+          ),
+          h4("Game Characteristics"),
+          tags$ul(
+            tags$li(strong("Delivery Format -"), " How the game is delivered or accessed (digital, physical, hybrid, etc.)"),
+            tags$li(strong("Game Type -"), " The category or style of game (board game, card game, simulation, role-play, escape room, puzzle, strategy, party game, storytelling/narrative, platform, debate/discussion focused, quiz, or other). Games may fall into multiple categories."),
+            tags$li(strong("Gameplay Style -"), " The social structure of play: cooperative/collaborative, competitive, solo, or team-based competition. Games may feature multiple styles."),
+            tags$li(strong("Tone/Learning Intensity -"), " The game's pedagogical approach and atmosphere:"),
+            tags$ul(
+              tags$li("Lighthearted/Playful - Fun-focused, good for engagement and icebreakers"),
+              tags$li("Balanced - Mix of fun and learning"),
+              tags$li("Learning-Intensive - Deep focus on concepts and understanding")
+            ),
+            tags$li(strong("Number of Players -"), " The recommended or official player range"),
+            tags$li(strong("Playtime -"), " Typical duration needed to play the game"),
+            tags$li(strong("Topic Areas -"), " Open research topics covered by the game, such as: Research Integrity, Open Data, Open Access, Pre-registration, Open Code, Open Peer Review, Big Team Science, Open Educational Resources, Open Methods, Open Hardware, Replication, Statistical Knowledge, Meta-Research, Qualitative Research, General Open Research, Open Software, Recognition and Rewards, Citizen Science, and others."),
+            tags$li(strong("FORRT Clusters -"), " Alignment with FORRT's educational framework clusters:"),
+            tags$ul(
+              tags$li("Cluster 1: Replication Crisis and Credibility Revolution"),
+              tags$li("Cluster 2: Conceptual and Statistical Knowledge"),
+              tags$li("Cluster 3: Ways of Working"),
+              tags$li("Cluster 4: Pre-analysis Planning"),
+              tags$li("Cluster 5: Transparency and Reproducibility in Computation and Analysis"),
+              tags$li("Cluster 6: FAIR Data and Materials"),
+              tags$li("Cluster 7: Publication Sharing"),
+              tags$li("Cluster 8: Replication and Meta-Research"),
+              tags$li("Cluster 9: Academic Structures and Institutions"),
+              tags$li("Cluster 10: Qualitative Research"),
+              tags$li("Cluster 11: Research Integrity")
+            ),
+            tags$li(strong("Learning Objectives -"), " What players are expected to learn or reflect on after playing (e.g., understanding pre-registration, recognizing questionable research practices, or grasping open research principles)"),
+            tags$li(strong("Target Audience -"), " The audience specified by the game's creators (if any)")
+          ),
+          h4("Pedagogical Use & User Experience"),
+          tags$ul(
+            tags$li(strong("Suggested Audience -"), " Community recommendations for who would benefit most from the game and why (may differ from the official target audience)"),
+            tags$li(strong("Prior Knowledge -"), " The level of research knowledge required: basic research understanding, some familiarity with open research practices, or specialized knowledge"),
+            tags$li(strong("Formal Evaluation -"), " Academic or empirical research studying the game's effectiveness, with links to studies and outcome summaries when available"),
+            tags$li(strong("Scalability -"), " Suggestions for adapting the game for different group sizes, including plenary settings, team play, or solo use"),
+            tags$li(strong("Teaching Integration -"), " Ideas for using the game in educational settings: as an intro or closing activity, connecting to course content, or modifying for time constraints"),
+            tags$li(strong("Context-Specific Elements -"), " Parts of the game that may need adaptation for different institutional settings or audiences"),
+            tags$li(strong("Preparation -"), " What's needed before playing (e.g., moderator preparation, printing, materials purchase, requesting open access versions)"),
+            tags$li(strong("Testimonials -"), " User feedback about the game's educational value, engagement, or outcomes")
           ),
           hr(),
           # Portal Statistics
@@ -299,42 +365,41 @@ ui <- tagList(
                 color = "purple"
               )
             )
-          ),
+          )
         )
       )
     )
-  ),
-  # Footer with links and resources
-  footer = div(
-    div(
-      class = "about-footer",
-      style = "display: flex; flex-wrap: wrap; justify-content: center; 
-        align-items: center; gap: 18px; margin: 0 auto 0 auto;
-        padding: 0px 10px 10px 10px; border-radius: 10px; 
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
-
-      h4(icon("link"), " Links & Resources"),
-      tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
-             target = "_blank",
-             icon("external-link-alt"), " Live App"),
-      tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
-             target = "_blank",
-             icon("github"), " GitHub"),
-      tags$a(href = "mailto:info@forrt.org",
-             target = "_blank",
-             icon("phone"), "Email"),
-      tags$a(href = "https://forrt.org",
-             target = "_blank",
-             "FORRT Project"),
-      tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
-             target = "_blank",
-             "Slack")
-    ),
-    p(style = "font-size: 12px; color: gray; display: 
-      block; text-align: center; padding:10px;",
-      "© 2024 FORRT Project. All rights reserved."),
   )
 
+  # Footer with links and resources
+footer = div(
+  div(
+    class = "about-footer",
+    style = "display: flex; flex-wrap: wrap; justify-content: center; 
+      align-items: center; gap: 18px; margin: 0 auto 0 auto;
+      padding: 0px 10px 10px 10px; border-radius: 10px; 
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
+
+    h4(icon("link"), " Links & Resources"),
+    tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
+            target = "_blank",
+            icon("external-link-alt"), " Live App"),
+    tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
+            target = "_blank",
+            icon("github"), " GitHub"),
+    tags$a(href = "mailto:info@forrt.org",
+            target = "_blank",
+            icon("phone"), "Email"),
+    tags$a(href = "https://forrt.org",
+            target = "_blank",
+            "FORRT Project"),
+    tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
+            target = "_blank",
+            "Slack")
+  ),
+  p(style = "font-size: 12px; color: gray; display: 
+    block; text-align: center; padding:10px;",
+    "© 2024 FORRT Project. All rights reserved.")
 )
 
 # Server
