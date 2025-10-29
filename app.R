@@ -270,12 +270,14 @@ ui <- tagList(
             )
           ),
           h2(icon("book"), " Open Research Games Portal - Field Guide"),
-          p(tags$a(
+          p("This guide explains what information you'll find for each game in the Portal and how it was collected."),
+          p(tags$a( 
             href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing",
-            "This guide explains what information you'll find for each game in the Portal and how it was collected. In the Google Sheets version of the Portal, you can see the exact phrasing of the questions under the 'Codebook' tab.",
+            "In the Google Sheets version of the Portal",
             target = "_blank",
             rel = "noopener noreferrer"
           )),
+          p("you can see the exact phrasing of the questions under the 'Codebook' tab."),
           h4("Basic Information"),
           tags$ul(
             tags$li(strong("Title -"), " The official name of the game"),
@@ -368,38 +370,38 @@ ui <- tagList(
           )
         )
       )
-    )
-  )
-
+    ),
   # Footer with links and resources
-footer = div(
-  div(
-    class = "about-footer",
-    style = "display: flex; flex-wrap: wrap; justify-content: center; 
+  footer = div(
+    div(
+      class = "about-footer",
+      style = "display: flex; flex-wrap: wrap; justify-content: center; 
       align-items: center; gap: 18px; margin: 0 auto 0 auto;
       padding: 0px 10px 10px 10px; border-radius: 10px; 
       box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
-
-    h4(icon("link"), " Links & Resources"),
-    tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
-            target = "_blank",
-            icon("external-link-alt"), " Live App"),
-    tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
-            target = "_blank",
-            icon("github"), " GitHub"),
-    tags$a(href = "mailto:info@forrt.org",
-            target = "_blank",
-            icon("phone"), "Email"),
-    tags$a(href = "https://forrt.org",
-            target = "_blank",
-            "FORRT Project"),
-    tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
-            target = "_blank",
-            "Slack")
-  ),
-  p(style = "font-size: 12px; color: gray; display: 
+      
+      h4(icon("link"), " Links & Resources"),
+      tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
+             target = "_blank",
+             icon("external-link-alt"), " Live App"),
+      tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
+             target = "_blank",
+             icon("github"), " GitHub"),
+      tags$a(href = "mailto:info@forrt.org",
+             target = "_blank",
+             icon("phone"), "Email"),
+      tags$a(href = "https://forrt.org",
+             target = "_blank",
+             "FORRT Project"),
+      tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
+             target = "_blank",
+             "Slack")
+    ),
+    p(style = "font-size: 12px; color: gray; display: 
     block; text-align: center; padding:10px;",
-    "© 2024 FORRT Project. All rights reserved.")
+      "© 2024 FORRT Project. All rights reserved.")
+  )
+
 )
 
 # Server
