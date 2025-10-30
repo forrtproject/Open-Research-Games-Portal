@@ -3,3 +3,15 @@
 .RData
 .Ruserdata
 .DS_Store
+.Rhistory
+.Rbuildignore
+__pycache__/
+*.pyc
+venv/
+env/
+*.log
+*.aux
+*.out
+*.toc
+*.gz
+*.lof

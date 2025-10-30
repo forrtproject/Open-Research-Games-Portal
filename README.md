@@ -1,6 +1,6 @@
 # [Open Research Games Portal](https://forrtapps.shinyapps.io/open-research-games-portal/)
 
-Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features 39 educational games that make complex research concepts accessible and engaging.
+Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features 30 ++  educational games that make complex research concepts accessible and engaging.
 
 ### Discover & Play
 

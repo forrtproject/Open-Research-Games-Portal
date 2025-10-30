@@ -1,0 +1,44 @@
+name: Deploy Open Research Games Portal Application
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch: # Allows manual triggering 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install dependencies
+        run: |
+          Rscript -e 'install.packages(c("shiny", "rsconnect"))'
+          if (file.exists("DESCRIPTION")) {
+            Rscript -e 'devtools::install_deps(dependencies = TRUE)'
+          }
+
+      - name: Deploy to shinyapps.io
+        env:
+          SHINYAPPS_TOKEN: ${{ secrets.ORGP_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.ORGP_SECRET }}
+          SHINYAPPS_NAME: ${{ secrets.ORGP_NAME }}
+          SHINYAPPS_ACCOUNT: ${{ secrets.ORGP_ACCOUNT }}
+        run: |
+          Rscript -e "
+            rsconnect::setAccountInfo(
+              name = Sys.getenv('SHINYAPPS_ACCOUNT'),
+              token = Sys.getenv('SHINYAPPS_TOKEN'),
+              secret = Sys.getenv('SHINYAPPS_SECRET')
+            )
+            rsconnect::deployApp(
+              appName = Sys.getenv('SHINYAPPS_NAME'),
+              appDir = '.'
+            )
+          "
+          

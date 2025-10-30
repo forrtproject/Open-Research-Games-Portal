@@ -1,8 +1,8 @@
-name: Monthly Data Processing
+name: Weekly Data Processing
 
 on:
   schedule:
-    - cron: '0 0 1 * *' # Runs at 00:00 UTC on the 1st of every month
+    - cron: '0 0 * * 0' # Runs weekly at 00:00 UTC every Sunday
   workflow_dispatch: # Allows manual triggering
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ORGP_DP_TOKEM }}
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
@@ -45,4 +45,4 @@ jobs:
         run: |
           Rscript scripts/Open-Research-Games-Portal.R
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }} # For googlesheets4 if needed
+          GITHUB_PAT: ${{ secrets.ORGP_DP_TOKEM }} # For googlesheets4 if needed
