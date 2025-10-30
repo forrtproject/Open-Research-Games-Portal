@@ -21,12 +21,6 @@ jobs:
           install-r: true
           use-public-rspm: true
 
-      #========================================
-      # Setup r2u for fast R package installation
-      #========================================
-      - name: Setup r2u
-        uses: eddelbuettel/github-actions/r2u-setup@master
-
       - name: Install system dependencies
         run: |
           sudo apt-get update
