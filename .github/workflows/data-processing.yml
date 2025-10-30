@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Allows manual triggering
 
 jobs:
-  process-data:
+  data-processing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,6 +19,12 @@ jobs:
         with:
           r-version: '4.4' # Use a specific R version for stability
           install-r: true
+
+      #========================================
+      # Setup r2u for fast R package installation
+      #========================================
+      - name: Setup r2u
+        uses: eddelbuettel/github-actions/r2u-setup@master
 
       - name: Install system dependencies
         run: |
