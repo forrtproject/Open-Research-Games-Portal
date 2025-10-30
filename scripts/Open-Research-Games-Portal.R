@@ -112,7 +112,7 @@ create_json_data_file <- function(df, output_file) {
   # Define all expected columns
   expected_columns <- c(
     "game_id", "title", "creators", "description", "access", "delivery_format",
-    "game_type", "gameplay_style", "number_of_players", "target_audience",
+    "game_type", "gameplay_style","tone", "number_of_players", "target_audience",
     "last_updated", "language", "licence", "topic_area", "forrt_clusters",
     "learning_objectives", "formal_evaluation", "suggested_audience",
     "prior_knowledge", "playtime", "scalability", "teaching_integration",

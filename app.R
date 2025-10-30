@@ -18,7 +18,7 @@ tryCatch({
 # Define all expected columns
 expected_columns <- c(
   "game_id", "title", "creators", "description", "access", "delivery_format",
-  "game_type", "gameplay_style", "number_of_players", "target_audience",
+  "game_type", "gameplay_style", "tone", "number_of_players", "target_audience",
   "last_updated", "language", "licence", "topic_area", "forrt_clusters",
   "learning_objectives", "formal_evaluation", "suggested_audience",
   "prior_knowledge", "playtime", "scalability", "teaching_integration",
@@ -147,8 +147,8 @@ ui <- tagList(
           ),
           # Search and Filter Section
           fluidRow(
-            column(4,
-              div(style = "margin-bottom: 15px;",
+            column(3,
+              div(style = "margin-bottom: 10px;",
                 textInput("search",
                           label = tagList(icon("search"), " Search Games:"),
                           placeholder = "Search by title, gameplay, topics..."),
@@ -156,17 +156,30 @@ ui <- tagList(
                            "Search across all game attributes")
               )
             ),
-            column(4,
+            column(3,
               selectInput("cluster_filter",
-                          label = tagList(icon("filter"), " FORRT Cluster:"),
-                          choices = c("All Clusters" = "all",
-                                  "Cluster 1: Replication Crisis" = "Cluster 1", # nolint
-                                  "Cluster 2: Statistical Knowledge" = "Cluster 2",  # nolint
-                                  "Cluster 6: FAIR Data" = "Cluster 6",
-                                  "Cluster 8: Meta-Research" = "Cluster 8"),
+                    label = tagList(icon("filter"), " FORRT Cluster:"),
+                    choices = c("All Clusters" = "all",
+                           "Cluster 1: Replication Crisis" = "Cluster 1", # nolint
+                           "Cluster 2: Statistical Knowledge" = "Cluster 2",  # nolint
+                           "Cluster 3: Ways of Working" = "Cluster 3", # nolint
+                           "Cluster 4: Pre-analysis Planning" = "Cluster 4", # nolint
+                           "Cluster 5: Transparency and Reproducibility" = "Cluster 5", # nolint
+                           "Cluster 6: FAIR Data" = "Cluster 6",
+                           "Cluster 7: Publication Sharing" = "Cluster 7", # nolint
+                           "Cluster 8: Meta-Research" = "Cluster 8",
+                           "Cluster 9: Academic Structures" = "Cluster 9", # nolint
+                           "Cluster 10: Qualitative Research" = "Cluster 10", # nolint
+                           "Cluster 11: Research Integrity" = "Cluster 11"), # nolint
+                    selected = "all")
+            ),
+            column(3,
+              selectInput("topic_area_filter",
+                          label = tagList(icon("book"), " Topic Area:"),
+                          choices = c("All Topics" = "all"),
                           selected = "all")
             ),
-            column(4,
+            column(3,
               selectInput("gameplay_filter",
                           label = tagList(icon("gamepad"), " Gameplay Style:"),
                           choices = c("All Styles" = "all"),
@@ -193,20 +206,70 @@ ui <- tagList(
     ),
     # Spreadsheet Tab
     tabPanel(
-      title = tagList(icon("database"), "Spreadsheet Table"),
-      value = "spreadsheet_tab",
-      tags$p(
-        "You can view the published Google sheet Version ",
-        tags$a(
-          href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/pubhtml?gid=610093275&single=true", # nolint
-          "here",
-          target = "_blank"
-        )
-      ),
-      tags$iframe(
-        src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/pubhtml?widget=true&amp;headers=false", # nolint
-        style = "border:none; width:100%; height:80vh;"
-      )
+      title = tagList(icon("book"), "Field Guide"),
+      value = "field_guide",
+      h2(icon("book"), " Open Research Games Portal - Field Guide"),
+          p("This guide explains what information you'll find for each game in the Portal and how it was collected."),
+          p(tags$a( 
+            href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing",
+            "In the Google Sheets version of the Portal",
+            "you can see the exact phrasing of the questions under the 'Codebook' tab.",
+            target = "_blank",
+            rel = "noopener noreferrer"
+          )),
+          h4("Basic Information"),
+          tags$ul(
+            tags$li(strong("Title -"), " The official name of the game"),
+            tags$li(strong("Creators -"), " The individuals or organizations who developed the game"),
+            tags$li(strong("Description -"), " An overview of the game's content and purpose, typically using the official description provided by the creators"),
+            tags$li(strong("Access -"), " Where to find or purchase the game, including links to open-source versions when available"),
+            tags$li(strong("Last Updated -"), " The year the game was most recently updated (helps assess whether content might be outdated)"),
+            tags$li(strong("Language -"), " Languages in which the game is available (English, French, German, Spanish, Portuguese, and others)"),
+            tags$li(strong("License -"), " The game's licensing terms (e.g., Creative Commons, commercial license, or unknown status)")
+          ),
+          h4("Game Characteristics"),
+          tags$ul(
+            tags$li(strong("Delivery Format -"), " How the game is delivered or accessed (digital, physical, hybrid, etc.)"),
+            tags$li(strong("Game Type -"), " The category or style of game (board game, card game, simulation, role-play, escape room, puzzle, strategy, party game, storytelling/narrative, platform, debate/discussion focused, quiz, or other). Games may fall into multiple categories."),
+            tags$li(strong("Gameplay Style -"), " The social structure of play: cooperative/collaborative, competitive, solo, or team-based competition. Games may feature multiple styles."),
+            tags$li(strong("Tone/Learning Intensity -"), " The game's pedagogical approach and atmosphere:"),
+            tags$ul(
+              tags$li("Lighthearted/Playful - Fun-focused, good for engagement and icebreakers"),
+              tags$li("Balanced - Mix of fun and learning"),
+              tags$li("Learning-Intensive - Deep focus on concepts and understanding")
+            ),
+            tags$li(strong("Number of Players -"), " The recommended or official player range"),
+            tags$li(strong("Playtime -"), " Typical duration needed to play the game"),
+            tags$li(strong("Topic Areas -"), " Open research topics covered by the game, such as: Research Integrity, Open Data, Open Access, Pre-registration, Open Code, Open Peer Review, Big Team Science, Open Educational Resources, Open Methods, Open Hardware, Replication, Statistical Knowledge, Meta-Research, Qualitative Research, General Open Research, Open Software, Recognition and Rewards, Citizen Science, and others."),
+            tags$li(strong("FORRT Clusters -"), " Alignment with FORRT's educational framework clusters:"),
+            tags$ul(
+              tags$li("Cluster 1: Replication Crisis and Credibility Revolution"),
+              tags$li("Cluster 2: Conceptual and Statistical Knowledge"),
+              tags$li("Cluster 3: Ways of Working"),
+              tags$li("Cluster 4: Pre-analysis Planning"),
+              tags$li("Cluster 5: Transparency and Reproducibility in Computation and Analysis"),
+              tags$li("Cluster 6: FAIR Data and Materials"),
+              tags$li("Cluster 7: Publication Sharing"),
+              tags$li("Cluster 8: Replication and Meta-Research"),
+              tags$li("Cluster 9: Academic Structures and Institutions"),
+              tags$li("Cluster 10: Qualitative Research"),
+              tags$li("Cluster 11: Research Integrity")
+            ),
+            tags$li(strong("Learning Objectives -"), " What players are expected to learn or reflect on after playing (e.g., understanding pre-registration, recognizing questionable research practices, or grasping open research principles)"),
+            tags$li(strong("Target Audience -"), " The audience specified by the game's creators (if any)")
+          ),
+          h4("Pedagogical Use & User Experience"),
+          tags$ul(
+            tags$li(strong("Suggested Audience -"), " Community recommendations for who would benefit most from the game and why (may differ from the official target audience)"),
+            tags$li(strong("Prior Knowledge -"), " The level of research knowledge required: basic research understanding, some familiarity with open research practices, or specialized knowledge"),
+            tags$li(strong("Formal Evaluation -"), " Academic or empirical research studying the game's effectiveness, with links to studies and outcome summaries when available"),
+            tags$li(strong("Scalability -"), " Suggestions for adapting the game for different group sizes, including plenary settings, team play, or solo use"),
+            tags$li(strong("Teaching Integration -"), " Ideas for using the game in educational settings: as an intro or closing activity, connecting to course content, or modifying for time constraints"),
+            tags$li(strong("Context-Specific Elements -"), " Parts of the game that may need adaptation for different institutional settings or audiences"),
+            tags$li(strong("Preparation -"), " What's needed before playing (e.g., moderator preparation, printing, materials purchase, requesting open access versions)"),
+            tags$li(strong("Testimonials -"), " User feedback about the game's educational value, engagement, or outcomes")
+          ),
+          hr()
     ),
     # About Tab
     tabPanel(
@@ -267,68 +330,8 @@ ui <- tagList(
             tags$li(strong("Export:"), " Download the complete database from the ", 
                 tags$a(href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing", 
                      "Google Sheet Portal", target = "_blank")) # nolint
-            )
-          ),
-          h2(icon("book"), " Open Research Games Portal - Field Guide"),
-          p("This guide explains what information you'll find for each game in the Portal and how it was collected."),
-          p(tags$a( 
-            href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing",
-            "In the Google Sheets version of the Portal",
-            target = "_blank",
-            rel = "noopener noreferrer"
-          )),
-          p("you can see the exact phrasing of the questions under the 'Codebook' tab."),
-          h4("Basic Information"),
-          tags$ul(
-            tags$li(strong("Title -"), " The official name of the game"),
-            tags$li(strong("Creators -"), " The individuals or organizations who developed the game"),
-            tags$li(strong("Description -"), " An overview of the game's content and purpose, typically using the official description provided by the creators"),
-            tags$li(strong("Access -"), " Where to find or purchase the game, including links to open-source versions when available"),
-            tags$li(strong("Last Updated -"), " The year the game was most recently updated (helps assess whether content might be outdated)"),
-            tags$li(strong("Language -"), " Languages in which the game is available (English, French, German, Spanish, Portuguese, and others)"),
-            tags$li(strong("License -"), " The game's licensing terms (e.g., Creative Commons, commercial license, or unknown status)")
-          ),
-          h4("Game Characteristics"),
-          tags$ul(
-            tags$li(strong("Delivery Format -"), " How the game is delivered or accessed (digital, physical, hybrid, etc.)"),
-            tags$li(strong("Game Type -"), " The category or style of game (board game, card game, simulation, role-play, escape room, puzzle, strategy, party game, storytelling/narrative, platform, debate/discussion focused, quiz, or other). Games may fall into multiple categories."),
-            tags$li(strong("Gameplay Style -"), " The social structure of play: cooperative/collaborative, competitive, solo, or team-based competition. Games may feature multiple styles."),
-            tags$li(strong("Tone/Learning Intensity -"), " The game's pedagogical approach and atmosphere:"),
-            tags$ul(
-              tags$li("Lighthearted/Playful - Fun-focused, good for engagement and icebreakers"),
-              tags$li("Balanced - Mix of fun and learning"),
-              tags$li("Learning-Intensive - Deep focus on concepts and understanding")
             ),
-            tags$li(strong("Number of Players -"), " The recommended or official player range"),
-            tags$li(strong("Playtime -"), " Typical duration needed to play the game"),
-            tags$li(strong("Topic Areas -"), " Open research topics covered by the game, such as: Research Integrity, Open Data, Open Access, Pre-registration, Open Code, Open Peer Review, Big Team Science, Open Educational Resources, Open Methods, Open Hardware, Replication, Statistical Knowledge, Meta-Research, Qualitative Research, General Open Research, Open Software, Recognition and Rewards, Citizen Science, and others."),
-            tags$li(strong("FORRT Clusters -"), " Alignment with FORRT's educational framework clusters:"),
-            tags$ul(
-              tags$li("Cluster 1: Replication Crisis and Credibility Revolution"),
-              tags$li("Cluster 2: Conceptual and Statistical Knowledge"),
-              tags$li("Cluster 3: Ways of Working"),
-              tags$li("Cluster 4: Pre-analysis Planning"),
-              tags$li("Cluster 5: Transparency and Reproducibility in Computation and Analysis"),
-              tags$li("Cluster 6: FAIR Data and Materials"),
-              tags$li("Cluster 7: Publication Sharing"),
-              tags$li("Cluster 8: Replication and Meta-Research"),
-              tags$li("Cluster 9: Academic Structures and Institutions"),
-              tags$li("Cluster 10: Qualitative Research"),
-              tags$li("Cluster 11: Research Integrity")
-            ),
-            tags$li(strong("Learning Objectives -"), " What players are expected to learn or reflect on after playing (e.g., understanding pre-registration, recognizing questionable research practices, or grasping open research principles)"),
-            tags$li(strong("Target Audience -"), " The audience specified by the game's creators (if any)")
-          ),
-          h4("Pedagogical Use & User Experience"),
-          tags$ul(
-            tags$li(strong("Suggested Audience -"), " Community recommendations for who would benefit most from the game and why (may differ from the official target audience)"),
-            tags$li(strong("Prior Knowledge -"), " The level of research knowledge required: basic research understanding, some familiarity with open research practices, or specialized knowledge"),
-            tags$li(strong("Formal Evaluation -"), " Academic or empirical research studying the game's effectiveness, with links to studies and outcome summaries when available"),
-            tags$li(strong("Scalability -"), " Suggestions for adapting the game for different group sizes, including plenary settings, team play, or solo use"),
-            tags$li(strong("Teaching Integration -"), " Ideas for using the game in educational settings: as an intro or closing activity, connecting to course content, or modifying for time constraints"),
-            tags$li(strong("Context-Specific Elements -"), " Parts of the game that may need adaptation for different institutional settings or audiences"),
-            tags$li(strong("Preparation -"), " What's needed before playing (e.g., moderator preparation, printing, materials purchase, requesting open access versions)"),
-            tags$li(strong("Testimonials -"), " User feedback about the game's educational value, engagement, or outcomes")
+            hr()
           ),
           hr(),
           # Portal Statistics
@@ -366,7 +369,8 @@ ui <- tagList(
                 icon = icon("globe"),
                 color = "purple"
               )
-            )
+            ),
+            hr()
           )
         )
       )
@@ -406,28 +410,106 @@ ui <- tagList(
 
 # Server
 server <- function(input, output, session) {
-  # Populate gameplay filter choices dynamically
+  # Populate gameplay filter choices dynamically (remove duplicates, split by comma/newline, trim)
   observe({
-    gameplay_styles <- sort(unique(unlist(strsplit(games_df$gameplay_style, "\n")))) # nolint
-    gameplay_choices <- c("All Styles" = "all", setNames(gameplay_styles, gameplay_styles)) # nolint
+    # Combine all gameplay_style fields, split by comma or newline, trim whitespace
+    all_styles <- unlist(strsplit(games_df$gameplay_style, "[,\n]"))
+    all_styles <- trimws(all_styles)
+    # Remove empty and "N/A"
+    all_styles <- all_styles[all_styles != "" & all_styles != "N/A"]
+    # Remove duplicates
+    gameplay_styles <- sort(unique(all_styles))
+    gameplay_choices <- c("All Styles" = "all", setNames(gameplay_styles, gameplay_styles))
     updateSelectInput(session, "gameplay_filter", choices = gameplay_choices)
+  })
+
+  # Populate topic area filter choices dynamically (remove duplicates, split by comma/newline, trim)
+  observe({
+    # Combine all topic_area fields, split by comma or newline, trim whitespace
+    all_topics <- unlist(strsplit(games_df$topic_area, "[,\n]"))
+    all_topics <- trimws(all_topics)
+    # Remove empty and "N/A"
+    all_topics <- all_topics[all_topics != "" & all_topics != "N/A"]
+    # Remove duplicates
+    topic_areas <- sort(unique(all_topics))
+    topic_choices <- c("All Topics" = "all", setNames(topic_areas, topic_areas))
+    updateSelectInput(session, "topic_area_filter", choices = topic_choices)
   })
   # Reset filters
   observeEvent(input$reset_filters, {
     updateTextInput(session, "search", value = "")
     updateSelectInput(session, "cluster_filter", selected = "all")
     updateSelectInput(session, "gameplay_filter", selected = "all")
+    updateSelectInput(session, "topic_area_filter", selected = "all")
   })
   # Reactive filtered games
   filtered_games <- reactive({
     df <- games_df
-    # Apply cluster filter
+    # Apply cluster filter (supports hardcoded clusters and numeric/label variations)
     if (!is.null(input$cluster_filter) && input$cluster_filter != "all") {
-      df <- df[grepl(input$cluster_filter, df$forrt_clusters, ignore.case = TRUE), ] # nolint
+      sel <- input$cluster_filter
+
+      # Full list of FORRT clusters (for reference / exact-label matching)
+      forrt_cluster_labels <- c(
+      "Cluster 1: Replication Crisis and Credibility Revolution",
+      "Cluster 2: Conceptual and Statistical Knowledge",
+      "Cluster 3: Ways of Working",
+      "Cluster 4: Pre-analysis Planning",
+      "Cluster 5: Transparency and Reproducibility in Computation and Analysis",
+      "Cluster 6: FAIR Data and Materials",
+      "Cluster 7: Publication Sharing",
+      "Cluster 8: Replication and Meta-Research",
+      "Cluster 9: Academic Structures and Institutions",
+      "Cluster 10: Qualitative Research",
+      "Cluster 11: Research Integrity"
+      )
+
+      # Try to extract a cluster number from the selection (handles "Cluster 3", "3", or full label)
+      cluster_num <- suppressWarnings(as.numeric(gsub("^.*?(\\d+).*$", "\\1", sel)))
+
+      # If selection matches one of the full labels, ensure cluster_num is set accordingly
+      if (is.na(cluster_num) && sel %in% forrt_cluster_labels) {
+      cluster_num <- as.numeric(gsub("^.*?(\\d+).*$", "\\1", sel))
+      }
+
+      if (!is.na(cluster_num)) {
+      matches <- sapply(df$forrt_clusters, function(x) {
+        if (is.null(x) || is.na(x) || x == "N/A") return(FALSE)
+        # Check numeric cluster membership (extract any numbers present)
+        nums <- unlist(regmatches(as.character(x), gregexpr("\\d+", as.character(x))))
+        if (length(nums) > 0 && as.character(cluster_num) %in% nums) return(TRUE)
+        # Fallback: check if the full cluster label appears in the field
+        lbl <- forrt_cluster_labels[forrt_cluster_labels %>% grepl(paste0("(^| )", cluster_num, "(:| )"), .)]
+        if (length(lbl) > 0 && grepl(lbl, x, ignore.case = TRUE)) return(TRUE)
+        return(FALSE)
+      })
+      df <- df[matches, , drop = FALSE]
+      } else {
+      # Fallback: text match (handles custom hardcoded labels or free-text)
+      df <- df[grepl(sel, df$forrt_clusters, ignore.case = TRUE), , drop = FALSE]
+      }
     }
     # Apply gameplay filter
     if (!is.null(input$gameplay_filter) && input$gameplay_filter != "all") {
       df <- df[grepl(input$gameplay_filter, df$gameplay_style, ignore.case = TRUE), ] # nolint
+    }
+    
+    # Apply topic area filter
+    if (!is.null(input$topic_area_filter) && input$topic_area_filter != "all") {
+      df <- df[grepl(input$topic_area_filter, df$topic_area, ignore.case = TRUE), ] # nolint
+    }
+
+    # Remove duplicate topic areas within each game's topic_area field
+    if ("topic_area" %in% names(df)) {
+      df$topic_area <- vapply(df$topic_area, function(x) {
+      # Split by comma or newline, trim whitespace, remove duplicates, and rejoin
+      items <- unlist(strsplit(as.character(x), "[,\n]"))
+      items <- trimws(items)
+      items <- items[items != "" & items != "N/A"]
+      items <- unique(items)
+      if (length(items) == 0) return("N/A")
+      paste(items, collapse = ", ")
+      }, character(1))
     }
     # Apply search filter
     if (!is.null(input$search) && input$search != "") {
@@ -471,9 +553,21 @@ output$games_cards <- renderUI({
               style = "padding: 40px; margin: 20px 0;",
               icon("search", class = "fa-3x", style = "color: #17a2b8; margin-bottom: 20px;"),
               h4("No games found"),
-              p("Try adjusting your filters or search terms to discover more games.")
+              p("Try adjusting your filters or search terms to discover more games."),
+              p(" You can also ",
+                tags$a(href = "https://forms.gle/PXYBrRhXGiZyi8M99",
+                       "submit a new game",
+                       target = "_blank",
+                       rel = "noopener noreferrer"), 
+                       "or ",
+                tags$a(href = "https://forms.gle/MSBWR87GchDo8fED7",
+                       "share your experience with existing games",
+                       target = "_blank",
+                       rel = "noopener noreferrer"),
+                " to help expand the Portal!"
           )
       )
+    )
     )
   }
   # Function to display field with new lines as <br/>
@@ -490,8 +584,8 @@ output$games_cards <- renderUI({
 
     # Truncate description for card view
     description <- if (!is.null(game$description) && !is.na(game$description) &&
-                         nchar(as.character(game$description)) > 200) {
-      paste0(substr(game$description, 1, 200), "...")
+                         nchar(as.character(game$description)) > 300) {
+      paste0(substr(game$description, 1, 300), "...")
     } else if (!is.null(game$description) && !is.na(game$description) &&
                nchar(as.character(game$description)) > 0) {
       as.character(game$description)
@@ -518,10 +612,19 @@ output$games_cards <- renderUI({
                     div(class = "metadata-item", style = "font-size: 1.2rem;",
                         icon("puzzle-piece", class = "metadata-icon"),
                         tags$span(class = "metadata-label",
-                                  style = "font-size: 1.2rem;", "Gameplay:"),
+                                  style = "font-size: 1.2rem;", "Gameplay Style:"),
                         tags$span(class = "metadata-value",
                                   style = "font-size: 1.2rem;",
                                   display_field(game$gameplay_style)
+                        )
+                    ),
+                    div(class = "metadata-item", style = "font-size: 1.2rem;",
+                        icon("adjust", class = "metadata-icon"),
+                        tags$span(class = "metadata-label",
+                                  style = "font-size: 1.2rem;", "Tone/Learning Intensity:"),
+                        tags$span(class = "metadata-value",
+                                  style = "font-size: 1.2rem;",
+                                  display_field(game$tone)
                         )
                     ),
                     div(class = "metadata-item", style = "font-size: 1.2rem;",
@@ -541,12 +644,19 @@ output$games_cards <- renderUI({
                         )
                     ),
                     div(class = "metadata-item", style = "font-size: 1.2rem;",
+                        icon("globe", class = "metadata-icon"),
+                        tags$span(class = "metadata-label", style = "font-size: 1.2rem;", "Forrt Clusters:"),
+                        tags$span(class = "metadata-value", style = "font-size: 1.2rem;",
+                                  display_field(game$forrt_clusters)
+                        )
+                    ),
+                    div(class = "metadata-item", style = "font-size: 1.2rem;",
                         icon("book", class = "metadata-icon"),
                         tags$span(class = "metadata-label", style = "font-size: 1.2rem;", "Topics:"),
                         tags$span(class = "metadata-value", style = "font-size: 1.2rem;",
                                   if (!is.null(game$topic_area) && !is.na(game$topic_area) &&
-                                        nchar(as.character(game$topic_area)) > 40) {
-                                    display_field(paste0(substr(game$topic_area, 1, 40), "..."))
+                                        nchar(as.character(game$topic_area)) > 200) {
+                                    display_field(paste0(substr(game$topic_area, 1, 200), "..."))
                                   } else {
                                     display_field(game$topic_area)
                                   }
@@ -613,12 +723,16 @@ output$games_cards <- renderUI({
           div(class = "row",
               div(class = "col-md-6",
                   p(strong("Creator(s): "), display_field(game_data$creators)),
-                  p(strong("Gameplay: "), display_field(game_data$gameplay_style)),
-                  p(strong("Game Type: "), display_field(game_data$game_type)),
-                  p(strong("Playtime: "), display_field(game_data$playtime)),
-                  p(strong("Language: "), display_field(game_data$language))
+                  p(strong("Gameplay style: "), display_field(game_data$gameplay_style)),
+                  p(strong("Tone/Learning Intensity: "), display_field(game_data$tone)),
+                  p(strong("Topic Areas: "), display_field(game_data$topic_area)),
+                  p(strong("FORRT Clusters: "), display_field(game_data$forrt_clusters)),
+
               ),
               div(class = "col-md-6",
+                  p(strong("Game Type: "), display_field(game_data$game_type)),
+                  p(strong("Playtime: "), display_field(game_data$playtime)),
+                  p(strong("Language: "), display_field(game_data$language)),
                   p(strong("Target Audience: "), display_field(game_data$target_audience)),
                   p(strong("Last Updated: "), display_field(game_data$last_updated)),
                   p(strong("Delivery Format: "), display_field(game_data$delivery_format)),
