@@ -18,11 +18,20 @@ jobs:
         with:
           r-version: '4.4' # Use a specific R version for stability
           install-r: true
+          use-public-rspm: true
 
-      - name: Install dependencies
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            shiny
+            rsconnect
+          extra-packages: any::remotes
+          cache: true # Cache packages for faster runs
+      
+      - name: Install DESCRIPTION dependencies
         run: |
-          Rscript -e 'install.packages(c("shiny", "rsconnect"))'
-          Rscript -e 'if (file.exists("DESCRIPTION")) { if (!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools"); devtools::install_deps(dependencies = TRUE) }'
+          Rscript -e "if (file.exists('DESCRIPTION')) devtools::install_deps(dependencies = TRUE)"
 
       - name: Deploy to shinyapps.io
         env:
