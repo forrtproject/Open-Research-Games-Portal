@@ -19,6 +19,7 @@ jobs:
         with:
           r-version: '4.4' # Use a specific R version for stability
           install-r: true
+          use-public-rspm: true
 
       #========================================
       # Setup r2u for fast R package installation
