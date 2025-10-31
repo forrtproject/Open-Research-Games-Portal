@@ -5,6 +5,9 @@ library(DT)
 library(jsonlite)
 library(dplyr)
 
+# Serve static files from the 'data' directory (images, favicon)
+shiny::addResourcePath("data", "data")
+
 # Load games data
 tryCatch({
   games_data <- fromJSON("data/open_research_games.json",
@@ -67,6 +70,8 @@ ui <- tagList(
   tags$head(
     # Add viewport meta tag for responsive design
     tags$meta(name = "viewport", content = "width=device-width, initial-scale=1"),
+    # Favicon
+    tags$link(rel = "icon", type = "image/png", href = "data/favicon.png"),
     tags$script(HTML("
       $(document).ready(function() {
         // Show/hide scroll to top button
@@ -85,6 +90,10 @@ ui <- tagList(
         });
       });
     ")),
+    # Navbar right logo styles
+    tags$style(HTML(".navbar-right-img{position:absolute; right:10px; top:6px;}")),
+    # Brand (logo + title) layout and size
+    tags$style(HTML(".navbar .navbar-brand{display:flex; align-items:center; gap:10px; padding-right:10px;} .navbar .navbar-brand img{height:48px !important;} .navbar .navbar-nav{margin-left:8px;}")),
     # preserve line breaks in descriptions and metadata
     tags$style(HTML("
       .game-description, .game-metadata, .metadata-item, .game-card-body {
@@ -126,7 +135,9 @@ ui <- tagList(
   ),
   # Main navbar
   navbarPage(
-    title = "FORRT Open Research Games Portal",
+    title = tagList(
+      "FORRT Open Research Games Portal"
+    ),
     id = "main_navbar",
     # Games Portal Tab
     tabPanel(
@@ -378,28 +389,36 @@ ui <- tagList(
   # Footer with links and resources
   footer = div(
     div(
-      class = "about-footer",
-      style = "display: flex; flex-wrap: wrap; justify-content: center; 
-      align-items: center; gap: 18px; margin: 0 auto 0 auto;
-      padding: 0px 10px 10px 10px; border-radius: 10px; 
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
-      
-      h4(icon("link"), " Links & Resources"),
-      tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
-             target = "_blank",
-             icon("external-link-alt"), " Live App"),
-      tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
-             target = "_blank",
-             icon("github"), " GitHub"),
-      tags$a(href = "mailto:info@forrt.org",
-             target = "_blank",
-             icon("phone"), "Email"),
-      tags$a(href = "https://forrt.org",
-             target = "_blank",
-             "FORRT Project"),
-      tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
-             target = "_blank",
-             "Slack")
+      style = "display: flex; align-items: center; justify-content: space-between; width: 100%;",
+      # Left logo
+      tags$img(src = "data/logo.png", alt = "Open Research Games Portal logo", style = "height: 40px; margin: 6px;"),
+      # Center links container
+      div(
+        class = "about-footer",
+        style = "display: flex; flex-wrap: wrap; justify-content: center; 
+        align-items: center; gap: 18px; margin: 0 auto 0 auto;
+        padding: 0px 10px 10px 10px; border-radius: 10px; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
+        
+        h4(icon("link"), " Links & Resources"),
+        tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
+               target = "_blank",
+               icon("external-link-alt"), " Live App"),
+        tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
+               target = "_blank",
+               icon("github"), " GitHub"),
+        tags$a(href = "mailto:info@forrt.org",
+               target = "_blank",
+               icon("phone"), "Email"),
+        tags$a(href = "https://forrt.org",
+               target = "_blank",
+               "FORRT Project"),
+        tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
+               target = "_blank",
+               "Slack")
+      ),
+      # Right logo
+      tags$img(src = "data/logo.png", alt = "Open Research Games Portal logo", style = "height: 40px; margin: 6px;")
     ),
     p(style = "font-size: 12px; color: gray; display: 
     block; text-align: center; padding:10px;",
