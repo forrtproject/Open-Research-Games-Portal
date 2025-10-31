@@ -24,7 +24,15 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
+            readxl
+            dplyr
+            tidyr
+            googlesheets4
+            stringr
+            jsonlite
             shiny
+            shinydashboard
+            DT
             rsconnect
           extra-packages: any::remotes
           cache: true # Cache packages for faster runs
