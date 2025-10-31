@@ -33,12 +33,18 @@ jobs:
         run: |
           Rscript -e "if (file.exists('DESCRIPTION')) devtools::install_deps(dependencies = TRUE)"
 
+      - name: Verify secrets are set
+        run: |
+          if [ -z "${{ secrets.SHINYAPPS_TOKEN }}" ]; then echo "ERROR: SHINYAPPS_TOKEN is not set"; exit 1; fi
+          if [ -z "${{ secrets.SHINYAPPS_SECRET }}" ]; then echo "ERROR: SHINYAPPS_SECRET is not set"; exit 1; fi
+          echo "All required secrets are set ✓"
+
       - name: Deploy to shinyapps.io
         env:
           SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
           SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
-          SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
-          SHINYAPPS_ACCOUNT: ${{ secrets.SHINYAPPS_ACCOUNT }}
+          SHINYAPPS_NAME: open-research-games-portal
+          SHINYAPPS_ACCOUNT: forrtapps
         run: |
           Rscript -e "
             rsconnect::setAccountInfo(
