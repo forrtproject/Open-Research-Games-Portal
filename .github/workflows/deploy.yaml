@@ -35,10 +35,10 @@ jobs:
 
       - name: Deploy to shinyapps.io
         env:
-          SHINYAPPS_TOKEN: ${{ secrets.ORGP_TOKEN }}
-          SHINYAPPS_SECRET: ${{ secrets.ORGP_SECRET }}
-          SHINYAPPS_NAME: ${{ secrets.ORGP_NAME }}
-          SHINYAPPS_ACCOUNT: ${{ secrets.ORGP_ACCOUNT }}
+          SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
+          SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
+          SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
+          SHINYAPPS_ACCOUNT: ${{ secrets.SHINYAPPS_ACCOUNT }}
         run: |
           Rscript -e "
             rsconnect::setAccountInfo(
