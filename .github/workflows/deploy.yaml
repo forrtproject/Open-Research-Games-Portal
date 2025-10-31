@@ -24,6 +24,8 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
+            cpp11
+            progress
             readxl
             dplyr
             tidyr
@@ -62,7 +64,8 @@ jobs:
             )
             rsconnect::deployApp(
               appName = Sys.getenv('SHINYAPPS_NAME'),
-              appDir = '.'
+              appDir = '.',
+              envManagement = 'none'
             )
           "
           
