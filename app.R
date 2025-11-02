@@ -184,22 +184,28 @@ ui <- tagList(
                            "Cluster 11: Research Integrity" = "Cluster 11"), # nolint
                     selected = "all")
             ),
-            column(3,
+            column(2,
               selectInput("topic_area_filter",
                           label = tagList(icon("book"), " Topic Area:"),
                           choices = c("All Topics" = "all"),
                           selected = "all")
             ),
-            column(3,
+            column(2,
               selectInput("gameplay_filter",
                           label = tagList(icon("gamepad"), " Gameplay Style:"),
                           choices = c("All Styles" = "all"),
                           selected = "all")
             )
           ),
+          column(2,
+              selectInput("tone_filter",
+                          label = tagList(icon("adjust"), " Tone/Learning Intensity:"),
+                          choices = c("All Tones" = "all"),
+                          selected = "all")
+            ),
           # Results counter and reset
           fluidRow(
-            column(6,
+            column(3,
               uiOutput("results_count")
             ),
             column(6, align = "right",
@@ -442,6 +448,19 @@ server <- function(input, output, session) {
     updateSelectInput(session, "gameplay_filter", choices = gameplay_choices)
   })
 
+  # Populate  tone filter choices dynamically (remove duplicates, split by comma/newline, trim)
+  observe({
+    # Combine all tone fields, split by comma or newline, trim whitespace
+    all_tones <- unlist(strsplit(games_df$tone, "[,\n]"))
+    all_tones <- trimws(all_tones)
+    # Remove empty and "N/A"
+    all_tones <- all_tones[all_tones != "" & all_tones != "N/A"]
+    # Remove duplicates
+    tones <- sort(unique(all_tones))
+    tone_choices <- c("All Tones" = "all", setNames(tones, tones))
+    updateSelectInput(session, "tone_filter", choices = tone_choices)
+  })
+
   # Populate topic area filter choices dynamically (remove duplicates, split by comma/newline, trim)
   observe({
     # Combine all topic_area fields, split by comma or newline, trim whitespace
@@ -460,6 +479,7 @@ server <- function(input, output, session) {
     updateSelectInput(session, "cluster_filter", selected = "all")
     updateSelectInput(session, "gameplay_filter", selected = "all")
     updateSelectInput(session, "topic_area_filter", selected = "all")
+    updateSelectInput(session, "tone_filter", selected = "all")
   })
   # Reactive filtered games
   filtered_games <- reactive({
@@ -512,7 +532,12 @@ server <- function(input, output, session) {
     if (!is.null(input$gameplay_filter) && input$gameplay_filter != "all") {
       df <- df[grepl(input$gameplay_filter, df$gameplay_style, ignore.case = TRUE), ] # nolint
     }
-    
+
+    # Apply tone filter
+    if (!is.null(input$tone_filter) && input$tone_filter != "all") {
+      df <- df[grepl(input$tone_filter, df$tone, ignore.case = TRUE), ] # nolint
+    }
+
     # Apply topic area filter
     if (!is.null(input$topic_area_filter) && input$topic_area_filter != "all") {
       df <- df[grepl(input$topic_area_filter, df$topic_area, ignore.case = TRUE), ] # nolint
@@ -538,6 +563,7 @@ server <- function(input, output, session) {
           grepl(search_term, tolower(df$description)) |
           grepl(search_term, tolower(df$gameplay_style)) |
           grepl(search_term, tolower(df$topic_area)) |
+          grepl(search_term, tolower(df$tone)) |
           grepl(search_term, tolower(df$forrt_clusters)),
       ]
     }
