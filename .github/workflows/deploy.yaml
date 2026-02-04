@@ -3,11 +3,17 @@ name: Deploy Open Research Games Portal Application
 on:
   schedule:
     - cron: '0 0 * * 1'
-  workflow_dispatch: # Allows manual triggering 
+  workflow_dispatch: # Allows manual triggering
+  workflow_run:
+    workflows: ["Weekly Data Processing"]
+    types:
+      - completed 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Only run if workflow_run succeeded OR if triggered manually/on schedule
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout code

@@ -47,3 +47,11 @@ jobs:
           Rscript scripts/Open-Research-Games-Portal.R
         env:
           GITHUB_PAT: ${{ secrets.ORGP_DP_TOKEM }} # For googlesheets4 if needed
+
+      - name: Commit and push updated data
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/open_research_games.json
+          git diff --staged --quiet || git commit -m "Update games data [automated]"
+          git push
