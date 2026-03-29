@@ -265,7 +265,7 @@
     "title": "The Openscientometer",
     "creators": "Christophe Dony",
     "description": "This game produces 4 prompts with information relating to Open Science and they correspond to a numerical value. The player can click on each prompt in order to find out more contextual information about it and use clues. They have to deduce which of the prompts corresponds to the lowest value and which to the highest value.",
-    "access": "https://christophedony.pubpub.org/pub/openscientometer/release/3",
+    "access": "https://christophedony.pubpub.org/pub/openscientometer/release/2    ,  https://christophedony.pubpub.org/pub/9jdyxjj2/release/2  (FR)",
     "delivery_format": "Online",
     "game_type": "Puzzle, Debate/Discussion focused",
     "gameplay_style": "Cooperative/Collaborative",
@@ -698,7 +698,7 @@
   "researchers-impact-publications-r-i-p-gid-027": {
     "game_id": "GID_027",
     "title": "Researchers, Impact & Publications (R.I.P.)",
-    "creators": "J K Merrett, Christopher James Warren, Stephen Gray, Zosia Beckles, Damian M Steer, Debra A Hiom",
+    "creators": "Kirsty Merrett, Christopher Warren",
     "description": "A parody-style card game, inspired by Cards Against Humanity, adapted for scholarly publishing and research data management. Players combine question and answer cards to create humorous or insightful takes on open research, impact, and academic life. It encourages discussion about research integrity, open access, open data, and scholarly communication in a light, social setting.",
     "access": "https://data.bris.ac.uk/data/dataset/1nufzjw3m9ho72cwisj1pwc75h",
     "delivery_format": "In-person",
@@ -753,16 +753,16 @@
     "testimonials": [],
     "entry_id": "ENTN_028"
   },
-  "how-to-fail-your-research-degree-how-to-fail-your-research-degree-gid-029": {
+  "how-to-fail-your-research-degree-gid-029": {
     "game_id": "GID_029",
-    "title": ["How to fail your research degree", "How to Fail Your Research Degree"],
+    "title": "How to Fail Your Research Degree",
     "creators": "Daisy Abbott",
     "description": "An educational, tile-based board game where players take on the role of students trying to complete a master’s dissertation under time pressure. The aim is to score the best grade by linking as many thesis cards as possible. Events disrupt or support their progress during three main stages (CONTEXT, IMPLEMENTATION, WRITE-UP).",
-    "access": ["http://howtofailyourresearchdegree.com/downloads.html", "http://howtofailyourresearchdegree.com/"],
+    "access": "http://howtofailyourresearchdegree.com/",
     "delivery_format": "In-person",
     "game_type": "Board game, Puzzle, Strategy",
     "gameplay_style": ["Competitive", "Team-Based Competition"],
-    "tone": [],
+    "tone": "Balanced",
     "number_of_players": ["1-12 players", "4-12"],
     "target_audience": ["Students", "postgraduate students, tutors of postgraduate students (including PGT and PGR)"],
     "last_updated": ["NULL", "2022"],
