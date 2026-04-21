@@ -33,10 +33,8 @@ install.packages(c("shiny", "shinydashboard", "DT", "jsonlite", "dplyr"))
 
 ### Running the App
 ```r
-# Set working directory to the cloned repo folder
-# Tip: if you opened `Open-Research-Games-Portal.Rproj` in RStudio,
-# you can usually skip setwd() because the project root is set automatically.
-setwd("/path/to/Open-Research-Games-Portal")
+# Set working directory
+setwd("/Users/rdm/Desktop/oss/Open-Research-Games-Portal")
 
 # Run the app
 shiny::runApp()

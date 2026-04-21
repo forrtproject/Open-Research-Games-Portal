@@ -9,9 +9,6 @@ on:
     types:
       - completed 
 
-permissions:
-  contents: read
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -29,22 +26,28 @@ jobs:
           install-r: true
           use-public-rspm: true
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            libuv1-dev \
-            libcurl4-openssl-dev \
-            libssl-dev \
-            libxml2-dev
-
-      - name: Restore R packages (renv)
-        uses: r-lib/actions/setup-renv@v2
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 1
+          packages: |
+            cpp11
+            progress
+            readxl
+            dplyr
+            tidyr
+            googlesheets4
+            stringr
+            jsonlite
+            shiny
+            shinydashboard
+            DT
+            rsconnect
+          extra-packages: any::remotes
+          cache: true # Cache packages for faster runs
       
-      # This repository is a Shiny app (not an R package), so `DESCRIPTION`
-      # is typically absent. If you later add one, prefer managing deps via renv.
+      - name: Install DESCRIPTION dependencies
+        run: |
+          Rscript -e "if (file.exists('DESCRIPTION')) devtools::install_deps(dependencies = TRUE)"
 
       - name: Verify secrets are set
         run: |

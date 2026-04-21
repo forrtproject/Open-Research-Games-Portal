@@ -5,9 +5,6 @@ on:
     - cron: '0 0 * * 0' # Runs weekly at 00:00 UTC every Sunday
   workflow_dispatch: # Allows manual triggering
 
-permissions:
-  contents: write
-
 jobs:
   data-processing:
     runs-on: ubuntu-latest
@@ -27,15 +24,23 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            libcurl4-openssl-dev \
-            libssl-dev \
-            libxml2-dev
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Restore R packages (renv)
-        uses: r-lib/actions/setup-renv@v2
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          cache-version: 1
+          packages: |
+            readxl
+            dplyr
+            tidyr
+            googlesheets4
+            stringr
+            jsonlite
+            shiny
+            shinydashboard
+            DT
+          extra-packages: any::remotes
+          cache: true # Cache packages for faster runs
 
       - name: Run data processing
         run: |
