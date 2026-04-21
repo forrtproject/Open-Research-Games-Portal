@@ -65,37 +65,7 @@ jobs:
           set -euo pipefail
           unset RENV_CONFIG_REPOS_OVERRIDE || true
           export CRAN="https://cloud.r-project.org"
-          Rscript --vanilla <<'RS'
-          options(repos = c(CRAN = Sys.getenv("CRAN")), Ncpus = max(1L, parallel::detectCores() - 1L))
-
-          can_load_renv <- function() {
-            tryCatch(
-              {
-                suppressPackageStartupMessages(loadNamespace("renv"))
-                TRUE
-              },
-              error = function(e) FALSE
-            )
-          }
-
-          if (can_load_renv()) {
-            message("renv is already loadable: ", packageVersion("renv"))
-            quit(status = 0)
-          }
-
-          message("renv not loadable; reinstalling renv from CRAN source ...")
-          tryCatch(
-            utils::remove.packages("renv", lib = .libPaths()[1]),
-            error = function(e) invisible(NULL)
-          )
-          install.packages("renv", repos = getOption("repos"), type = "source")
-
-          if (!can_load_renv()) {
-            stop("renv still not loadable after source reinstall")
-          }
-
-          message("renv OK: ", packageVersion("renv"))
-          RS
+          Rscript --vanilla -e "options(warn=1); cran<-Sys.getenv('CRAN'); if(!nzchar(cran)) stop('CRAN env var is empty'); options(repos=c(CRAN=cran), Ncpus=max(1L, parallel::detectCores()-1L)); purge_renv<-function(){ for (lib in .libPaths()) { p0<-file.path(lib,'renv'); if (dir.exists(p0)) unlink(p0, recursive=TRUE, force=TRUE); tryCatch(utils::remove.packages('renv', lib=lib), error=function(e) invisible(NULL)) } }; can_load<-function() tryCatch({suppressPackageStartupMessages(loadNamespace('renv')); TRUE}, error=function(e) FALSE); if (can_load()) { message('renv already loadable: ', packageVersion('renv')); quit(status=0) }; message('renv not loadable; purging renv and reinstalling from CRAN source ...'); purge_renv(); install.packages('renv', repos=getOption('repos'), type='source'); if (!can_load()) stop('renv still not loadable after source reinstall'); message('renv OK: ', packageVersion('renv'))"
 
       - name: Restore R packages (renv)
         uses: r-lib/actions/setup-renv@v2
