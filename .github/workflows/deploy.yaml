@@ -2,79 +2,90 @@ name: Deploy Open Research Games Portal Application
 
 on:
   schedule:
-    - cron: '0 0 * * 1'
-  workflow_dispatch: # Allows manual triggering
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
   workflow_run:
     workflows: ["Weekly Data Processing"]
     types:
-      - completed 
+      - completed
 
 permissions:
   contents: read
 
+concurrency:
+  group: shinyapps-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+
     # Only run if workflow_run succeeded OR if triggered manually/on schedule
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
 
+    env:
+      # Helpful defaults for renv + GitHub Actions
+      RENV_CONFIG_CACHE_ENABLED: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up R
+      - name: Set up R (match renv.lock)
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.4' # Use a specific R version for stability
+          r-version: renv
           install-r: true
           use-public-rspm: true
+          Ncpus: "2"
+          http-user-agent: "release"
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            libuv1-dev \
-            libcurl4-openssl-dev \
-            libssl-dev \
-            libxml2-dev
-
-      - name: Restore R packages (renv)
+      - name: Install Linux build dependencies
         run: |
           set -euo pipefail
-          . /etc/os-release
-          export RSPM="https://packagemanager.posit.co/cran/__linux__/${VERSION_CODENAME}/latest"
-          # `setup-r` may set RENV_CONFIG_REPOS_OVERRIDE; keep it aligned with RSPM
-          # so renv doesn't try to resolve against an unexpected repo set.
-          export RENV_CONFIG_REPOS_OVERRIDE="${RSPM}"
-          Rscript --vanilla <<'RS'
-          rspm <- Sys.getenv("RSPM")
-          if (!nzchar(rspm)) stop("RSPM env var is empty")
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            gfortran \
+            pkg-config \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libgit2-dev \
+            zlib1g-dev \
+            libbz2-dev \
+            liblzma-dev \
+            libpcre2-dev \
+            libicu-dev \
+            libpng-dev \
+            libjpeg-dev \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libsodium-dev
 
-          options(
-            repos = c(RSPM = rspm, CRAN = "https://cloud.r-project.org"),
-            Ncpus = max(1L, parallel::detectCores() - 1L)
-          )
+      - name: Restore R packages (renv)
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          # Must be a valid R expression (see r-lib/actions setup-renv README)
+          profile: 'NULL'
+          cache-version: 1
+          # Save renv cache even if restore fails mid-way (helps debugging flaky installs)
+          bypass-cache: never
 
-          Sys.setenv(USE_BUNDLED_LIBUV = "1")
-
-          if (!requireNamespace("renv", quietly = TRUE)) {
-            # Let R choose the best available package type for this platform/repos.
-            install.packages("renv", repos = getOption("repos"), dependencies = TRUE)
-          }
-          if (!requireNamespace("renv", quietly = TRUE)) {
-            stop("Failed to install/load renv")
-          }
-
-          renv::restore(prompt = FALSE, rebuild = "never")
-          RS
-      
-      # This repository is a Shiny app (not an R package), so `DESCRIPTION`
-      # is typically absent. If you later add one, prefer managing deps via renv.
-
-      - name: Verify secrets are set
+      - name: Verify shinyapps.io secrets are set
+        shell: bash
         run: |
-          if [ -z "${{ secrets.SHINYAPPS_TOKEN }}" ]; then echo "ERROR: SHINYAPPS_TOKEN is not set"; exit 1; fi
-          if [ -z "${{ secrets.SHINYAPPS_SECRET }}" ]; then echo "ERROR: SHINYAPPS_SECRET is not set"; exit 1; fi
+          set -euo pipefail
+          if [ -z "${{ secrets.SHINYAPPS_TOKEN }}" ]; then
+            echo "ERROR: SHINYAPPS_TOKEN is not set"
+            exit 1
+          fi
+          if [ -z "${{ secrets.SHINYAPPS_SECRET }}" ]; then
+            echo "ERROR: SHINYAPPS_SECRET is not set"
+            exit 1
+          fi
           echo "All required secrets are set ✓"
 
       - name: Deploy to shinyapps.io
@@ -83,18 +94,23 @@ jobs:
           SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
           SHINYAPPS_NAME: open-research-games-portal
           SHINYAPPS_ACCOUNT: forrtapps
+          USE_BUNDLED_LIBUV: "1"
         run: |
+          set -euo pipefail
           Rscript --vanilla <<'RS'
           source("renv/activate.R")
+
           rsconnect::setAccountInfo(
             name = Sys.getenv("SHINYAPPS_ACCOUNT"),
             token = Sys.getenv("SHINYAPPS_TOKEN"),
             secret = Sys.getenv("SHINYAPPS_SECRET")
           )
+
           rsconnect::deployApp(
             appName = Sys.getenv("SHINYAPPS_NAME"),
             appDir = ".",
-            envManagement = "none"
+            # Let shinyapps.io manage R package installation on the server when needed.
+            # The repo still pins versions via renv.lock for reproducible CI + bundling.
+            envManagement = "auto"
           )
           RS
-          
