@@ -13,7 +13,8 @@ local({
       }
     }
 
-    renv_version <- Sys.getenv("RENV_VERSION", unset = "1.0.11")
+    # Default to a known-good CRAN release (avoid 404s from stale pins).
+    renv_version <- Sys.getenv("RENV_VERSION", unset = "1.2.0")
     renv_tarball <- sprintf("renv_%s.tar.gz", renv_version)
     renv_url <- sprintf("https://cran.r-project.org/src/contrib/%s", renv_tarball)
 
@@ -31,6 +32,19 @@ local({
       if (file.exists(destfile)) {
         try(utils::install.packages(destfile, repos = NULL, type = "source", lib = library_paths[[1]]), silent = TRUE)
       }
+    }
+
+    # Fallback: install the latest available 'renv' from CRAN if the pinned
+    # tarball isn't available (or download/install failed).
+    if (!requireNamespace("renv", quietly = TRUE)) {
+      try(
+        utils::install.packages(
+          "renv",
+          repos = "https://cloud.r-project.org",
+          lib = library_paths[[1]]
+        ),
+        silent = TRUE
+      )
     }
 
     if (requireNamespace("renv", quietly = TRUE)) {

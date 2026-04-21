@@ -32,21 +32,10 @@ jobs:
             libssl-dev \
             libxml2-dev
 
-      - name: Install R dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
+      - name: Restore R packages (renv)
+        uses: r-lib/actions/setup-renv@v2
         with:
-          packages: |
-            readxl
-            dplyr
-            tidyr
-            googlesheets4
-            stringr
-            jsonlite
-            shiny
-            shinydashboard
-            DT
-          extra-packages: any::remotes
-          cache: true # Cache packages for faster runs
+          cache-version: 1
 
       - name: Run data processing
         run: |
