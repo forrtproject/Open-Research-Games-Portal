@@ -63,11 +63,12 @@ jobs:
       - name: Ensure renv matches this R (avoid bad PPM binaries)
         run: |
           set -euo pipefail
+          unset RENV_CONFIG_REPOS_OVERRIDE || true
+          export CRAN="https://cloud.r-project.org"
           Rscript --vanilla <<'RS'
-          target <- Sys.getenv("RENV_VERSION_PIN", unset = "1.1.8")
+          options(repos = c(CRAN = Sys.getenv("CRAN")), Ncpus = max(1L, parallel::detectCores() - 1L))
 
-          ok <- function() {
-            if (!requireNamespace("renv", quietly = TRUE)) return(FALSE)
+          can_load_renv <- function() {
             tryCatch(
               {
                 suppressPackageStartupMessages(loadNamespace("renv"))
@@ -77,42 +78,23 @@ jobs:
             )
           }
 
-          if (ok()) {
-            message("renv already loadable (version ", packageVersion("renv"), ")")
+          if (can_load_renv()) {
+            message("renv is already loadable: ", packageVersion("renv"))
             quit(status = 0)
           }
 
-          message("Installing renv ", target, " from CRAN source (avoids incompatible PPM binaries for renv itself) ...")
-          try(remove.packages("renv"), silent = TRUE)
-
-          contrib_url <- paste0("https://cran.r-project.org/src/contrib/renv_", target, ".tar.gz")
-          archive_url <- paste0(
-            "https://cran.r-project.org/src/contrib/Archive/renv/renv_",
-            target,
-            ".tar.gz"
+          message("renv not loadable; reinstalling renv from CRAN source ...")
+          tryCatch(
+            utils::remove.packages("renv", lib = .libPaths()[1]),
+            error = function(e) invisible(NULL)
           )
+          install.packages("renv", repos = getOption("repos"), type = "source")
 
-          install_from_url <- function(url) {
-            tf <- tempfile(fileext = ".tar.gz")
-            on.exit(unlink(tf), add = TRUE)
-            dl <- tryCatch(
-              utils::download.file(url, tf, mode = "wb", quiet = TRUE),
-              error = function(e) 1L
-            )
-            if (!identical(dl, 0L)) return(FALSE)
-            if (!file.exists(tf) || file.info(tf)$size <= 0) return(FALSE)
-            utils::install.packages(tf, repos = NULL, type = "source")
-            TRUE
+          if (!can_load_renv()) {
+            stop("renv still not loadable after source reinstall")
           }
 
-          ok_install <- install_from_url(contrib_url) || install_from_url(archive_url)
-
-          if (!ok_install) {
-            message("Pinned tarball not found; falling back to CRAN current renv source ...")
-            install.packages("renv", repos = "https://cloud.r-project.org", type = "source")
-          }
-
-          if (!ok()) stop("Failed to install a loadable renv for this R version")
+          message("renv OK: ", packageVersion("renv"))
           RS
 
       - name: Restore R packages (renv)
