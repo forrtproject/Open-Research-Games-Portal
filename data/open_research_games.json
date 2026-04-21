@@ -6,7 +6,10 @@
     "description": "The LEGO® Metadata for Reproducibility game is an interactive game for 4-24 players, using LEGO® to help researchers explore the metadata they might need to record to aid reproducibility. The game addresses issues including planning for metadata, formats of metadata recording, standards and automation. The game also draws multiple parallels between recording and communicating the research process and documenting and the creation of a LEGO® model. The process of playing the game draws researchers into discussions on how metadata is captured, recorded and disseminated, which in turn provides an opportunity for signposting to further resources in this area.",
     "access": "https://eprints.gla.ac.uk/196477/",
     "delivery_format": "In-person",
-    "game_type": ["Construction", "Building with lego, Construction"],
+    "game_type": [
+      "Construction",
+      "Building with lego, Construction"
+    ],
     "gameplay_style": "Cooperative/Collaborative",
     "tone": [],
     "number_of_players": "4-24",
@@ -18,7 +21,10 @@
     "forrt_clusters": "Cluster 1: Replication Crisis and Credibility Revolution, Cluster 5: Transparency and Reproducibility in Computation and Analysis, Cluster 6: FAIR Data and Materials, Cluster 8: Replication and Meta-Research",
     "learning_objectives": "The game addresses issues including planning for metadata, formats of metadata recording, standards and automation. The game also draws multiple parallels between recording and communicating the research process and documenting and the creation of a LEGO® model. The process of playing the game draws researchers into discussions on how metadata is captured, recorded and disseminated, which in turn provides an opportunity for signposting to further resources in this area.",
     "formal_evaluation": "I do not know",
-    "suggested_audience": ["Researchers, research administrators and support staff including but not restricted to data managers and technicians.", "Researchers, research administrators and support staff including but not restricted to data managers and technicians.  Highlights the importance of recording and communicating the research process to aid replication. The process of playing the game draws players into discussions on how metadata is captured, recorded and disseminated, which in turn provides an opportunity for signposting to further resources in this area."],
+    "suggested_audience": [
+      "Researchers, research administrators and support staff including but not restricted to data managers and technicians.",
+      "Researchers, research administrators and support staff including but not restricted to data managers and technicians.  Highlights the importance of recording and communicating the research process to aid replication. The process of playing the game draws players into discussions on how metadata is captured, recorded and disseminated, which in turn provides an opportunity for signposting to further resources in this area."
+    ],
     "prior_knowledge": "None",
     "playtime": "1 hour",
     "scalability": "It needs at least two people but one person could follow the logic and play alone.  It is possible to play with as many people as you can support playing it.",
@@ -26,7 +32,10 @@
     "context_specific_elements": "We do not think so but it is entirely possible to amend it.",
     "preparation": "It is all described in the pack.",
     "testimonials": "Many.  Just this week a colleague at Open Research Scotland said that this game and the publication trap were the best two games for teaching researchers about open research.",
-    "entry_id": ["ENTN_001", "ENTA_002"]
+    "entry_id": [
+      "ENTN_001",
+      "ENTA_002"
+    ]
   },
   "open-science-quest-gid-002": {
     "game_id": "GID_002",
@@ -265,7 +274,7 @@
     "title": "The Openscientometer",
     "creators": "Christophe Dony",
     "description": "This game produces 4 prompts with information relating to Open Science and they correspond to a numerical value. The player can click on each prompt in order to find out more contextual information about it and use clues. They have to deduce which of the prompts corresponds to the lowest value and which to the highest value.",
-    "access": "https://christophedony.pubpub.org/pub/openscientometer/release/2    ,  https://christophedony.pubpub.org/pub/9jdyxjj2/release/2  (FR)",
+    "access": "https://christophedony.pubpub.org/pub/openscientometer/release/2",
     "delivery_format": "Online",
     "game_type": "Puzzle, Debate/Discussion focused",
     "gameplay_style": "Cooperative/Collaborative",
@@ -533,7 +542,10 @@
     "tone": "Lighthearted/Playful",
     "number_of_players": "3+ players",
     "target_audience": "Researcher friendly",
-    "last_updated": ["2023", "NA"],
+    "last_updated": [
+      "2023",
+      "NA"
+    ],
     "language": "English",
     "licence": "Creative Commons BY-NC-SA 2.0 license",
     "topic_area": "General Open Research",
@@ -543,12 +555,18 @@
     "suggested_audience": "(Early carreer) researchers and people in research support. The game is very fun can be used to discuss very recognizable issues you will/have run in to during various stages of the research cycle.",
     "prior_knowledge": "Some knowledge of the research cycle and some basic knowledge of open research principles make the game more fun. Different knowledge levels between players are OK!",
     "playtime": "Varies, you can technically end the game whenever you want.",
-    "scalability": ["You could do it in (small) teams; this would mean that there would be discussion within the team to choose which card to play and the Reviewer team would discuss which card wins. ", "I think it could work in a plenary setting but you would have to get a bit more creative."],
+    "scalability": [
+      "You could do it in (small) teams; this would mean that there would be discussion within the team to choose which card to play and the Reviewer team would discuss which card wins. ",
+      "I think it could work in a plenary setting but you would have to get a bit more creative."
+    ],
     "teaching_integration": "I think the game is a nice ice-breaker or can be played as a closing activity. It is provides a low-threshold and fun way to discuss common issues and personal experiences.",
     "context_specific_elements": [],
     "preparation": "You can request a physical version of the game, otherwise there is no preparation required.",
     "testimonials": "Mostly a very fun and engaging game! Many people are familiar with the gameplay since it is based on Cards Against Humanity, so that minimizes having to explain how it works. I greatly enjoy it, and I think it is very nice to play with people with varying expertise in research and open research knowledge.",
-    "entry_id": ["ENTN_021", "ENTA_001"]
+    "entry_id": [
+      "ENTN_021",
+      "ENTA_001"
+    ]
   },
   "the-publishing-trap-gid-022": {
     "game_id": "GID_022",
@@ -567,15 +585,31 @@
     "licence": "Creative Commons, Attribution, ShareAlike 4.0",
     "topic_area": "Open Data, Open Access, Open Educational Resources, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Through playing the game and discussing your choices you will be able to: ", "Critique and assess the publication and communication choices available to ", "academics at different stages in their career. ", "Compare the implications of open and more closed publishing routes. ", "Critically evaluate the relationship between knowledge, impact and money in ", "academic life."],
-    "formal_evaluation": ["Product Review:", "https://www.researchgate.net/publication/328012753_The_Publishing_Trap_Product_Review"],
+    "learning_objectives": [
+      "Through playing the game and discussing your choices you will be able to: ",
+      "Critique and assess the publication and communication choices available to ",
+      "academics at different stages in their career. ",
+      "Compare the implications of open and more closed publishing routes. ",
+      "Critically evaluate the relationship between knowledge, impact and money in ",
+      "academic life."
+    ],
+    "formal_evaluation": [
+      "Product Review:",
+      "https://www.researchgate.net/publication/328012753_The_Publishing_Trap_Product_Review"
+    ],
     "suggested_audience": "Anyone interested in scholarly publishing and open access",
     "prior_knowledge": "Basic knowledge about research",
     "playtime": "1.5–2 hours",
     "scalability": [],
     "teaching_integration": [],
     "context_specific_elements": [],
-    "preparation": ["Setting up online forms (e.g., Google Forms) with the decision questions for each round.", "Preparing the interactive PowerPoint slides, including scoreboard and branching choices.", "Familiarizing facilitators (ideally two) with the slides, rules, and learning points.", "Arranging breakout rooms (if played online) for team discussions.", "Cutting and printing (if played in person)"],
+    "preparation": [
+      "Setting up online forms (e.g., Google Forms) with the decision questions for each round.",
+      "Preparing the interactive PowerPoint slides, including scoreboard and branching choices.",
+      "Familiarizing facilitators (ideally two) with the slides, rules, and learning points.",
+      "Arranging breakout rooms (if played online) for team discussions.",
+      "Cutting and printing (if played in person)"
+    ],
     "testimonials": [],
     "entry_id": "ENTN_022"
   },
@@ -596,7 +630,13 @@
     "licence": [],
     "topic_area": "Research Integrity, Open Peer Review, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Players are expected to learn or reflect on:", "The pressures and absurdities of academic publishing, including how one might “publish nonsense” or sabotage others to accumulate citations—satirizing real academic incentives.", "The chaotic dynamics of peer review and scholarly competition, embodied by the “Reviewer 2” trope and cutthroat citation-maximization gameplay.", "How academic culture can reward quantity and impact over integrity, prompting players to consider questionable practices, even if only in a humorous way ", "Broader insight into academic norms and structures through parody, making research culture more transparent and relatable to diverse audiences"],
+    "learning_objectives": [
+      "Players are expected to learn or reflect on:",
+      "The pressures and absurdities of academic publishing, including how one might “publish nonsense” or sabotage others to accumulate citations—satirizing real academic incentives.",
+      "The chaotic dynamics of peer review and scholarly competition, embodied by the “Reviewer 2” trope and cutthroat citation-maximization gameplay.",
+      "How academic culture can reward quantity and impact over integrity, prompting players to consider questionable practices, even if only in a humorous way ",
+      "Broader insight into academic norms and structures through parody, making research culture more transparent and relatable to diverse audiences"
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -620,12 +660,25 @@
     "tone": "Balanced",
     "number_of_players": "2 to 6 players in individual mode or 2 to 4 teams in team mode.",
     "target_audience": "Researchers and research support staff.",
-    "last_updated": ["2024", "NA"],
+    "last_updated": [
+      "2024",
+      "NA"
+    ],
     "language": "English",
     "licence": "CC BY-NC-SA 4.0",
     "topic_area": "Open Data, Open Access, Open Methods, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions",
-    "learning_objectives": ["Be introduced to the various steps involved in the research process and start to recognize the differences between recommended and flawed approaches.", "Explore different pathways for publishing in Open Access and begin to understand how to make decisions about sharing your work openly.", "Receive a first overview of key concepts for managing research data, guiding you on how to ensure it is FAIR (Findable, Accessible, Interoperable, and Reusable) and compliant with relevant standards and guidelines.", "Develop initial experience with systematically searching for information, helping you locate and evaluate relevant sources for your research", "It is important to tailor the game to its audience. Depending on the focus of the training, questions can be limited to a single theme or include all themes. The cards are colour-coded by theme and stored in separate boxes, making it very easy to use only one box if you want to focus on a specific theme. Similarly, the questions vary in difficulty, making the game suitable for researchers at any career stage. When we guide a game session, we can also review the questions beforehand and filter some out if needed.", "The game’s physical format encourages interactive engagement. By reading the questions out loud and allowing time for discussion, it stimulates interaction among researchers as well as between researchers and support staff. Researchers are prompted to share their experiences, making it possible for support staff to identify specific challenges researchers encounter. These insights not only allow us to refine the game itself but also inform the design of future training sessions. For instance, if researchers struggle to answer questions about metadata, this may indicate a need for additional training on that topic.", "A downside of the format is that it can only be played with small groups around one board. That’s why we have printed multiple copies. When we train a large group, we simply bring several boards and divide the participants among them. This way, the game can still be used for bigger groups.", "The game concept is intentionally straightforward to ensure the rules are easy to understand. This way, we don’t lose too much time explaining how to play, and it allows researchers to borrow the game and play it on their own without a member of the research support team present.", "And we have also experienced that the game works well both as an introduction to key concepts (which could be followed by a more in-depth training session), and the other way around: you can first give a training and then end with the game as a way to see how much they understood and repeat some information. This not only helps participants repeat a bit what they have learned, but also new topics can be discussed that didn’t come up during the training."],
+    "learning_objectives": [
+      "Be introduced to the various steps involved in the research process and start to recognize the differences between recommended and flawed approaches.",
+      "Explore different pathways for publishing in Open Access and begin to understand how to make decisions about sharing your work openly.",
+      "Receive a first overview of key concepts for managing research data, guiding you on how to ensure it is FAIR (Findable, Accessible, Interoperable, and Reusable) and compliant with relevant standards and guidelines.",
+      "Develop initial experience with systematically searching for information, helping you locate and evaluate relevant sources for your research",
+      "It is important to tailor the game to its audience. Depending on the focus of the training, questions can be limited to a single theme or include all themes. The cards are colour-coded by theme and stored in separate boxes, making it very easy to use only one box if you want to focus on a specific theme. Similarly, the questions vary in difficulty, making the game suitable for researchers at any career stage. When we guide a game session, we can also review the questions beforehand and filter some out if needed.",
+      "The game’s physical format encourages interactive engagement. By reading the questions out loud and allowing time for discussion, it stimulates interaction among researchers as well as between researchers and support staff. Researchers are prompted to share their experiences, making it possible for support staff to identify specific challenges researchers encounter. These insights not only allow us to refine the game itself but also inform the design of future training sessions. For instance, if researchers struggle to answer questions about metadata, this may indicate a need for additional training on that topic.",
+      "A downside of the format is that it can only be played with small groups around one board. That’s why we have printed multiple copies. When we train a large group, we simply bring several boards and divide the participants among them. This way, the game can still be used for bigger groups.",
+      "The game concept is intentionally straightforward to ensure the rules are easy to understand. This way, we don’t lose too much time explaining how to play, and it allows researchers to borrow the game and play it on their own without a member of the research support team present.",
+      "And we have also experienced that the game works well both as an introduction to key concepts (which could be followed by a more in-depth training session), and the other way around: you can first give a training and then end with the game as a way to see how much they understood and repeat some information. This not only helps participants repeat a bit what they have learned, but also new topics can be discussed that didn’t come up during the training."
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -633,9 +686,15 @@
     "scalability": [],
     "teaching_integration": [],
     "context_specific_elements": [],
-    "preparation": ["Printing and setting up gameboard or renting it from KU Leuven Libraries if you are based in Belgium, pawns, die, and Q&A cards.", "Decide on game endpoint (rounds, time, or number of cards). It's a"],
+    "preparation": [
+      "Printing and setting up gameboard or renting it from KU Leuven Libraries if you are based in Belgium, pawns, die, and Q&A cards.",
+      "Decide on game endpoint (rounds, time, or number of cards). It's a"
+    ],
     "testimonials": [],
-    "entry_id": ["ENTN_024", "ENTA_004"]
+    "entry_id": [
+      "ENTN_024",
+      "ENTA_004"
+    ]
   },
   "the-game-of-open-access-ucla-gid-025": {
     "game_id": "GID_025",
@@ -654,7 +713,11 @@
     "licence": [],
     "topic_area": "Open Access, Open Peer Review, General Open Research",
     "forrt_clusters": "Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions",
-    "learning_objectives": ["Understand key concepts in Open Access (e.g., APCs, embargoes, repositories, preprints, peer review).", "Build familiarity with tools and resources like DOAJ, OA Button, Unpaywall, and institutional repositories.", "Reflect on how publishing choices affect accessibility of research"],
+    "learning_objectives": [
+      "Understand key concepts in Open Access (e.g., APCs, embargoes, repositories, preprints, peer review).",
+      "Build familiarity with tools and resources like DOAJ, OA Button, Unpaywall, and institutional repositories.",
+      "Reflect on how publishing choices affect accessibility of research"
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -683,7 +746,13 @@
     "licence": "CC BY 4.0",
     "topic_area": "Research Integrity, Open Data, Open Access, Open Peer Review, Open Methods, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Check copyright and licensing for research outputs (CC BY, CC0, reuse).", "Apply FAIR data principles and publish datasets openly.", "Evaluate journals for open access suitability (gold, hybrid, diamond, transformative agreements).", "Identify suitable collaborators using ORCID and open science networks.", "Reflect on broader open science workflows and institutional policies."],
+    "learning_objectives": [
+      "Check copyright and licensing for research outputs (CC BY, CC0, reuse).",
+      "Apply FAIR data principles and publish datasets openly.",
+      "Evaluate journals for open access suitability (gold, hybrid, diamond, transformative agreements).",
+      "Identify suitable collaborators using ORCID and open science networks.",
+      "Reflect on broader open science workflows and institutional policies."
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -707,12 +776,18 @@
     "tone": "Lighthearted/Playful",
     "number_of_players": "Minimum: 4 players, recommended 6-8 players",
     "target_audience": [],
-    "last_updated": ["2020", "NA"],
+    "last_updated": [
+      "2020",
+      "NA"
+    ],
     "language": "English",
     "licence": "Creative Commons BY-NC-SA 2.0",
     "topic_area": "Research Integrity, Open Data, Open Access, Open Peer Review, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Reflect on challenges of publishing, data management, and open access.", "Recognize key concepts (e.g., DOIs, FAIR data, repositories, embargoes, APCs)"],
+    "learning_objectives": [
+      "Reflect on challenges of publishing, data management, and open access.",
+      "Recognize key concepts (e.g., DOIs, FAIR data, repositories, embargoes, APCs)"
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -720,9 +795,15 @@
     "scalability": [],
     "teaching_integration": "Printing a select subset of the cards  in a larger format - such as A5 or A4 - laminating them and putting Velcro on the back is a really good icebreaker for people to play with at stalls, fairs or other events where there is a presence from Research Support.  There is something quite striking about the black-and-white cards and it really served as a hook to draw people towards us which enabled us to open a conversation - it was fun for researchers/PGRs etc. be able to throw up silly answers on a large felt board.",
     "context_specific_elements": [],
-    "preparation": ["Printing of cards", "Printing and cutting (& optionally laminating for replayability)."],
+    "preparation": [
+      "Printing of cards",
+      "Printing and cutting (& optionally laminating for replayability)."
+    ],
     "testimonials": "The emphasis should always be on keeping the tone fairly light, to break-up the actually teaching part of what any given correct answer 'should' be. It is a lot of fun to break out though.",
-    "entry_id": ["ENTN_027", "ENTA_005"]
+    "entry_id": [
+      "ENTN_027",
+      "ENTA_005"
+    ]
   },
   "statcheck-the-game-gid-028": {
     "game_id": "GID_028",
@@ -741,7 +822,11 @@
     "licence": "Game materials do not use copyright-free images",
     "topic_area": "Research Integrity, Open Peer Review, Open Methods, Statistical Knowledge, General Open Research",
     "forrt_clusters": "Cluster 1: Replication Crisis and Credibility Revolution, Cluster 2: Conceptual and Statistical Knowledge, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Experience gameplay reflecting publication pressure, competition, and statistical manipulation.", "Learn about questionable research practices.", "Understand the role of statcheck tools and open science in detecting inconsistencies and promoting integrity."],
+    "learning_objectives": [
+      "Experience gameplay reflecting publication pressure, competition, and statistical manipulation.",
+      "Learn about questionable research practices.",
+      "Understand the role of statcheck tools and open science in detecting inconsistencies and promoting integrity."
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -761,26 +846,74 @@
     "access": "http://howtofailyourresearchdegree.com/",
     "delivery_format": "In-person",
     "game_type": "Board game, Puzzle, Strategy",
-    "gameplay_style": ["Competitive", "Team-Based Competition"],
+    "gameplay_style": [
+      "Competitive",
+      "Team-Based Competition"
+    ],
     "tone": "Balanced",
-    "number_of_players": ["1-12 players", "4-12"],
-    "target_audience": ["Students", "postgraduate students, tutors of postgraduate students (including PGT and PGR)"],
-    "last_updated": ["NULL", "2022"],
+    "number_of_players": [
+      "1-12 players",
+      "4-12"
+    ],
+    "target_audience": [
+      "Students",
+      "postgraduate students, tutors of postgraduate students (including PGT and PGR)"
+    ],
+    "last_updated": [
+      "NULL",
+      "2022"
+    ],
     "language": "English",
-    "licence": ["Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License", "CC-BY-SA"],
-    "topic_area": ["Research Integrity, Open Data, General Open Research", "Research Integrity, General Open Research, Research project management, risk mitigation, research processes"],
-    "forrt_clusters": ["Cluster 6: FAIR Data and Materials, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity", "Cluster 3: Ways of Working, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity"],
-    "learning_objectives": ["Gain knowledge on the process of publishing a research paper.", "Understand the various risks affecting research and their impact on projects", "Recognise dependencies between tasks at different stages of research", "Understand the interrelations of different risks with the activities to negate or mitigate them", "Be aware of the time-critical nature of short research projects"],
-    "formal_evaluation": ["https://gamebasedlearninginhe.wordpress.com/2024/05/22/how-to-fail-your-research-degree-and-its-growing-impact", "https://www.tandfonline.com/doi/full/10.1080/23752696.2019.1629825 ", "Research skills are challenging to teach in a way that is meaningful to students and has ongoing impact in research practice. This paper investigates constructivist and experiential strategies for effective learning and deep understanding of postgraduate research skills and proposes a game-based learning (GBL) solution. A (non-digital) game called How to Fail Your Research Degree was designed and iteratively developed. Gameplay loop analysis identifies various learning and game mechanics and contextualises them in relation to GBL theory. Evaluation of gameplay (n = 127) demonstrates effective transmission of intended learning outcomes and positive game experience based on Keller’s Attention-Relevance-Confidence-Satisfaction (ARCS) model. Discussion proposes that the game has high cognitive authenticity, relies heavily on tutor facilitation, can create tension between knowledge and confidence, and is applicable to multiple domains and learning situations. GBL is proposed to be an original and effective approach to teaching high-level, functional learning outcomes such as academic research skills."],
+    "licence": [
+      "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License",
+      "CC-BY-SA"
+    ],
+    "topic_area": [
+      "Research Integrity, Open Data, General Open Research",
+      "Research Integrity, General Open Research, Research project management, risk mitigation, research processes"
+    ],
+    "forrt_clusters": [
+      "Cluster 6: FAIR Data and Materials, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
+      "Cluster 3: Ways of Working, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity"
+    ],
+    "learning_objectives": [
+      "Gain knowledge on the process of publishing a research paper.",
+      "Understand the various risks affecting research and their impact on projects",
+      "Recognise dependencies between tasks at different stages of research",
+      "Understand the interrelations of different risks with the activities to negate or mitigate them",
+      "Be aware of the time-critical nature of short research projects"
+    ],
+    "formal_evaluation": [
+      "https://gamebasedlearninginhe.wordpress.com/2024/05/22/how-to-fail-your-research-degree-and-its-growing-impact",
+      "https://www.tandfonline.com/doi/full/10.1080/23752696.2019.1629825 ",
+      "Research skills are challenging to teach in a way that is meaningful to students and has ongoing impact in research practice. This paper investigates constructivist and experiential strategies for effective learning and deep understanding of postgraduate research skills and proposes a game-based learning (GBL) solution. A (non-digital) game called How to Fail Your Research Degree was designed and iteratively developed. Gameplay loop analysis identifies various learning and game mechanics and contextualises them in relation to GBL theory. Evaluation of gameplay (n = 127) demonstrates effective transmission of intended learning outcomes and positive game experience based on Keller’s Attention-Relevance-Confidence-Satisfaction (ARCS) model. Discussion proposes that the game has high cognitive authenticity, relies heavily on tutor facilitation, can create tension between knowledge and confidence, and is applicable to multiple domains and learning situations. GBL is proposed to be an original and effective approach to teaching high-level, functional learning outcomes such as academic research skills."
+    ],
     "suggested_audience": "postgraduate students, final year undergraduate students, doctoral students, early career researchers",
     "prior_knowledge": "none",
-    "playtime": ["45–90 minutes", "45 mins gameplay, up to 1 hour debrief"],
+    "playtime": [
+      "45–90 minutes",
+      "45 mins gameplay, up to 1 hour debrief"
+    ],
     "scalability": "only works with up to 4 teams, of up to 3-4 people per team. Digital versions are available for demo play with individuals but this is not the recommended approach.",
     "teaching_integration": "In a 2 hour seminar session, first hour for setup and play, second hour for debrief and discussion. Works very well as an icebreaker to a postgrade course.",
     "context_specific_elements": "there are a couple of cards which are context-specific to PGT teaching, so these could be altered for PGR but otherwise it is very generically applicable to all topics.",
-    "preparation": ["Facilitator for students needed, printing of tiles", "Facilitator needs to learn how to run the game, if getting the free version cutting out the cards is needed, if buying as print-on-demand no prep."],
-    "testimonials": ["\"The game taught various elements of research in a fun and interactive manner.\"", "\"I also felt I could relate to my own research process throughout the game.\"", "\"Really good tool to brainstorm process of research. \"", "\"Very positive experience as it is very well organised and didactic and present a clear framework for approaching research.\"", "\"Really excellent way into thinking through the mechanics of research!\"", "\"I remember at the time the game made me think about how carefully I had planned my research and prompted me to re-think the timescales required for things like ethical clearance. It also encouraged me to rethink my approach to backing up my work. I think overall the game had a positive impact on my approach to planning my research project, as I took a lot of it into consideration when planning the next stages of my project.\"", "\"I hope my classmates do this!\""],
-    "entry_id": ["ENTN_029", "ENTA_003"]
+    "preparation": [
+      "Facilitator for students needed, printing of tiles",
+      "Facilitator needs to learn how to run the game, if getting the free version cutting out the cards is needed, if buying as print-on-demand no prep."
+    ],
+    "testimonials": [
+      "\"The game taught various elements of research in a fun and interactive manner.\"",
+      "\"I also felt I could relate to my own research process throughout the game.\"",
+      "\"Really good tool to brainstorm process of research. \"",
+      "\"Very positive experience as it is very well organised and didactic and present a clear framework for approaching research.\"",
+      "\"Really excellent way into thinking through the mechanics of research!\"",
+      "\"I remember at the time the game made me think about how carefully I had planned my research and prompted me to re-think the timescales required for things like ethical clearance. It also encouraged me to rethink my approach to backing up my work. I think overall the game had a positive impact on my approach to planning my research project, as I took a lot of it into consideration when planning the next stages of my project.\"",
+      "\"I hope my classmates do this!\""
+    ],
+    "entry_id": [
+      "ENTN_029",
+      "ENTA_003"
+    ]
   },
   "curate-the-digital-curator-game-gid-033": {
     "game_id": "GID_033",
@@ -816,7 +949,7 @@
     "title": "Copyright: The Card Game",
     "creators": "Chris Morrison, Jane Secker, Copyright Literacy organization",
     "description": "Copyright: The Card Game is educational game designed to train educators, librarians, and support staff about UK copyright law. The game is designed to be played by up to 5 teams of up to 6 people and takes delegates from copyright basics through to real world scenarios which explore the relationship between licences and copyright fair dealing exceptions. The teams are sent into break-out rooms during each of the four rounds of the game to discuss their answers to common copyright scenarios. They respond using online forms (Google form or Microsoft Forms) which allows the trainer to collect in their answers from each team and respond accordingly in a group discussion.",
-    "access": ["https://copyrightliteracy.org/resources/copyright-the-card-game/copyright-the-card-game-online           ", "https://copyrightliteracy.org/resources/copyright-the-card-game"],
+    "access": "https://copyrightliteracy.org/resources/copyright-the-card-game/copyright-the-card-game-online",
     "delivery_format": "Hybrid",
     "game_type": "Card game, Debate/Discussion focused",
     "gameplay_style": "Team-Based Competition",
@@ -828,7 +961,12 @@
     "licence": "CC BY-SA 4.0",
     "topic_area": "Research Integrity, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 11: Research Integrity",
-    "learning_objectives": ["Understand how copyright really works in practice in your sector", "Encounter existing licences and the new legislative framework", "Practice using the exceptions and licences in sector specific examples", "Discuss the role of risk management in making decisions"],
+    "learning_objectives": [
+      "Understand how copyright really works in practice in your sector",
+      "Encounter existing licences and the new legislative framework",
+      "Practice using the exceptions and licences in sector specific examples",
+      "Discuss the role of risk management in making decisions"
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -836,7 +974,11 @@
     "scalability": [],
     "teaching_integration": [],
     "context_specific_elements": [],
-    "preparation": ["Online meeting platform with breakout room functionality.", "PDF card decks.", "Google Forms or Microsoft Forms set up for each round to collect team answers."],
+    "preparation": [
+      "Online meeting platform with breakout room functionality.",
+      "PDF card decks.",
+      "Google Forms or Microsoft Forms set up for each round to collect team answers."
+    ],
     "testimonials": [],
     "entry_id": "ENTN_034"
   },
@@ -857,7 +999,12 @@
     "licence": [],
     "topic_area": "Research Integrity, Open Data, Open Access, Open Peer Review, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Explore key concepts of open science", "Reflect on equity issues in publishing and rising APC costs.", "Recognize risks like predatory publishers and questionable practices.", "Discuss different routes to Open Access."],
+    "learning_objectives": [
+      "Explore key concepts of open science",
+      "Reflect on equity issues in publishing and rising APC costs.",
+      "Recognize risks like predatory publishers and questionable practices.",
+      "Discuss different routes to Open Access."
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -886,7 +1033,11 @@
     "licence": [],
     "topic_area": "Research Integrity, Open Access, General Open Research",
     "forrt_clusters": "Cluster 6: FAIR Data and Materials, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Understand key concepts of open access.", "Reflect on challenges in publishing.", "Encourge critical discussion of real life OA challenges."],
+    "learning_objectives": [
+      "Understand key concepts of open access.",
+      "Reflect on challenges in publishing.",
+      "Encourge critical discussion of real life OA challenges."
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -915,7 +1066,12 @@
     "licence": "CC BY-SA 4.0",
     "topic_area": "Research Integrity, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 6: FAIR Data and Materials, Cluster 11: Research Integrity",
-    "learning_objectives": ["Understand how copyright licences (Creative Commons, All Rights Reserved, etc.) affect the reuse of creative works.", "Explore the role of exceptions (teaching, research, fair dealing)", "Recognize the perspectives of different stakeholders (creators, teachers, students, researchers).", "Build confidence in making and justifying copyright decisions."],
+    "learning_objectives": [
+      "Understand how copyright licences (Creative Commons, All Rights Reserved, etc.) affect the reuse of creative works.",
+      "Explore the role of exceptions (teaching, research, fair dealing)",
+      "Recognize the perspectives of different stakeholders (creators, teachers, students, researchers).",
+      "Build confidence in making and justifying copyright decisions."
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -923,7 +1079,11 @@
     "scalability": [],
     "teaching_integration": [],
     "context_specific_elements": [],
-    "preparation": ["Print role cards, task cards, licence cards, voting cards, and information sheets.", "Provide play-dough. ", "Appoint a facilitator to explain copyright basics and guide discussion."],
+    "preparation": [
+      "Print role cards, task cards, licence cards, voting cards, and information sheets.",
+      "Provide play-dough. ",
+      "Appoint a facilitator to explain copyright basics and guide discussion."
+    ],
     "testimonials": [],
     "entry_id": "ENTN_037"
   },
@@ -944,7 +1104,12 @@
     "licence": [],
     "topic_area": "Research Integrity, Open Access, General Open Research",
     "forrt_clusters": "Cluster 3: Ways of Working, Cluster 7: Publication Sharing, Cluster 9: Academic Structures and Institutions, Cluster 11: Research Integrity",
-    "learning_objectives": ["Explore the barriers to open access through interactive storytelling.", "Reflect on systemic issues: reliance on prestige metrics, predatory publishing, and publisher restrictions.", "Recognize how flawed incentives can obstruct openness and integrity in research.", "Encourage teamwork and discussion about publishing equity"],
+    "learning_objectives": [
+      "Explore the barriers to open access through interactive storytelling.",
+      "Reflect on systemic issues: reliance on prestige metrics, predatory publishing, and publisher restrictions.",
+      "Recognize how flawed incentives can obstruct openness and integrity in research.",
+      "Encourage teamwork and discussion about publishing equity"
+    ],
     "formal_evaluation": [],
     "suggested_audience": [],
     "prior_knowledge": [],
@@ -952,7 +1117,10 @@
     "scalability": "Can be adapted for groups or classrooms",
     "teaching_integration": [],
     "context_specific_elements": [],
-    "preparation": ["Distribute role cards, presentation slides, magazine, and email reveal materials.", "A facilitator guides play and reveals the solution."],
+    "preparation": [
+      "Distribute role cards, presentation slides, magazine, and email reveal materials.",
+      "A facilitator guides play and reveals the solution."
+    ],
     "testimonials": [],
     "entry_id": "ENTN_039"
   },
@@ -981,7 +1149,11 @@
     "scalability": "The game can be played with multiple teams of 2-5 people",
     "teaching_integration": [],
     "context_specific_elements": [],
-    "preparation": ["Each player needs their own laptop (phone or tablet is not sufficient).", "Webcam, Microphone and Headphones", "A computer mouse (not recommended to play it on a touchpad)"],
+    "preparation": [
+      "Each player needs their own laptop (phone or tablet is not sufficient).",
+      "Webcam, Microphone and Headphones",
+      "A computer mouse (not recommended to play it on a touchpad)"
+    ],
     "testimonials": [],
     "entry_id": "ENTN_043"
   },
@@ -990,7 +1162,7 @@
     "title": "The Pentomino Reproducibility Game",
     "creators": "Larissa Leiminger (ORCiD: 0000-0002-6491-3197)",
     "description": "The Pentomino Reproducibility Game is an interactive puzzle game for 1 game instructor and up to 4 players that illustrates the principles of scientific reproducibility through collaborative play.",
-    "access": "Blog post: https://osip.mpdl.mpg.de/2025/10/28/the-pentomino-reproducibiliy-game/ Materials: https://doi.org/10.17617/2.3657865",
+    "access": "https://osip.mpdl.mpg.de/2025/10/28/the-pentomino-reproducibiliy-game/",
     "delivery_format": "In-person",
     "game_type": "Role-play, Puzzle",
     "gameplay_style": "Cooperative/Collaborative",
@@ -1002,7 +1174,10 @@
     "licence": "CC-BY-SA 4.0",
     "topic_area": "Open Data, Open Code, Replication",
     "forrt_clusters": "Cluster 5: Transparency and Reproducibility in Computation and Analysis",
-    "learning_objectives": ["By participating in the game, players gain a deeper understanding of why transparent and consistent documentation is essential in scientific research. They also experience the common obstacles that can prevent reproducibility, such as missing details or unclear communication.", "Beyond these technical lessons, the game encourages reflection on the role of collaboration in science. Participants see how discussing methods, clarifying assumptions, and giving constructive feedback contribute to more reliable results. Finally, the game creates a tangible link between playful problem-solving and real-world scientific practice, helping researchers internalize abstract concepts in an engaging and memorable way."],
+    "learning_objectives": [
+      "By participating in the game, players gain a deeper understanding of why transparent and consistent documentation is essential in scientific research. They also experience the common obstacles that can prevent reproducibility, such as missing details or unclear communication.",
+      "Beyond these technical lessons, the game encourages reflection on the role of collaboration in science. Participants see how discussing methods, clarifying assumptions, and giving constructive feedback contribute to more reliable results. Finally, the game creates a tangible link between playful problem-solving and real-world scientific practice, helping researchers internalize abstract concepts in an engaging and memorable way."
+    ],
     "formal_evaluation": "No",
     "suggested_audience": "It was developed for the Open Science Ambassadors initiative of the Max Planck Society and is therefore best used by those who try to bring the topic of Open Science and reproducibility into new groups.",
     "prior_knowledge": "General knowledge about research/scientific publishing is helpful. The game instructor benefits from prior knowledge about the open research practices mentioned, but it is not strictly necessary.",
@@ -1019,7 +1194,7 @@
     "title": "Lord Schism Saga",
     "creators": "Erica Levi",
     "description": "This is an episodic, branching scenario adventure where online players explore a dystopian world inspired by the style of Dungeons & Dragons. Players encounter fantasy characters, make impactful choices, and progress through the story while learning about copyright, public domain, and licensing. The narrative unfolds in a world dominated by Lord Schism, who rose to power after the War of Supremacy and now enforces strict control over knowledge through his regime, The New Order. As a Resistance operative working with the secret group known as The Enlightened, players must disrupt plans to lock away knowledge and help restore freedom of information.",
-    "access": "https://ericalevi.coventry.domains/lordSchism.html open source",
+    "access": "https://ericalevi.coventry.domains/lordSchism.html",
     "delivery_format": "Online",
     "game_type": "Escape room, Storytelling/Narrative, Quiz, Branching scenario",
     "gameplay_style": "Cooperative/Collaborative, Solo, Team-Based Competition",
@@ -1040,7 +1215,12 @@
     "teaching_integration": "Use the game as an engaging alternative to a traditional PowerPoint presentation to introduce copyright in a fun, interactive way, making complex concepts more accessible and memorable.",
     "context_specific_elements": "No",
     "preparation": "Minimal preparation; optionally, have someone available to roam the virtual room and assist players if they get stuck, though this is not essential.",
-    "testimonials": ["“This is a really useful tool and will help the audience understand the complexities of copyright. The game flows well, and you learn all aspects of the public domain and cc licences.”", "“I really enjoyed this, as I love puzzles! Learning about this all too. Thanks”", "“SUPERB! Invite me again if there is similar one!”", "“Brilliant! I thoroughly enjoyed learning in this way. It made me use my brain, and I was not bored at all.”"],
+    "testimonials": [
+      "“This is a really useful tool and will help the audience understand the complexities of copyright. The game flows well, and you learn all aspects of the public domain and cc licences.”",
+      "“I really enjoyed this, as I love puzzles! Learning about this all too. Thanks”",
+      "“SUPERB! Invite me again if there is similar one!”",
+      "“Brilliant! I thoroughly enjoyed learning in this way. It made me use my brain, and I was not bored at all.”"
+    ],
     "entry_id": "ENTN_046"
   },
   "copyright-heights-mystery-gid-047": {
@@ -1243,7 +1423,15 @@
     "teaching_integration": "As a teasing activity to introduce the concept of copyright around Halloween",
     "context_specific_elements": "No",
     "preparation": "None",
-    "testimonials": ["“The graphics were really good”", "“This is so much fun. The fun bit is in noting down the numbers and arranging them to reach the final bit!! Super FUN. Thank you!!”", "“I enjoyed the activity of working as a group to solve the questions.”", "“It was great being interactive, but also educational.”", "“I arrived too late to the session, but I tried to play alone - very Interactive and fun - I loved how the game mixed spooky Halloween vibes with copyright challenges! It made learning about such a serious topic surprisingly fun and easy to understand.”", "“I liked the need to explore and find things. I loved the graphics and atmosphere, and I liked the fun facts given about relevant copyright infringement cases. I would be interested in seeing or exploring the platform you have used for these, as each game or activity you publish is better than the last!!! I really enjoy these games/escape rooms when you publish them, and believe this to be the most engaging way to learn about something that could otherwise be quite dry for many people. […]!”", "“The Halloween-themed online game was both engaging and informative. It provided a creative and enjoyable way to learn about copyright and intellectual property. The experience left me inspired to explore further.”"],
+    "testimonials": [
+      "“The graphics were really good”",
+      "“This is so much fun. The fun bit is in noting down the numbers and arranging them to reach the final bit!! Super FUN. Thank you!!”",
+      "“I enjoyed the activity of working as a group to solve the questions.”",
+      "“It was great being interactive, but also educational.”",
+      "“I arrived too late to the session, but I tried to play alone - very Interactive and fun - I loved how the game mixed spooky Halloween vibes with copyright challenges! It made learning about such a serious topic surprisingly fun and easy to understand.”",
+      "“I liked the need to explore and find things. I loved the graphics and atmosphere, and I liked the fun facts given about relevant copyright infringement cases. I would be interested in seeing or exploring the platform you have used for these, as each game or activity you publish is better than the last!!! I really enjoy these games/escape rooms when you publish them, and believe this to be the most engaging way to learn about something that could otherwise be quite dry for many people. […]!”",
+      "“The Halloween-themed online game was both engaging and informative. It provided a creative and enjoyable way to learn about copyright and intellectual property. The experience left me inspired to explore further.”"
+    ],
     "entry_id": "ENTN_057"
   },
   "christmas-gid-058": {
@@ -1251,7 +1439,7 @@
     "title": "Christmas",
     "creators": "Erica Levi",
     "description": "Help a little Bernie, a broonie, to decorate the Chrsitmas tree by answer a few questions on copyright.",
-    "access": "https://ericalevi.coventry.domains/games/xmas/xmas.html open source",
+    "access": "https://ericalevi.coventry.domains/games/xmas/xmas.html",
     "delivery_format": "Online",
     "game_type": "Quiz",
     "gameplay_style": "Solo, Team-Based Competition",
@@ -1272,7 +1460,10 @@
     "teaching_integration": "Intro or closing activity,",
     "context_specific_elements": "No",
     "preparation": "None - it could be circulated on Santa’s List Day which falls on December, 4th",
-    "testimonials": ["This was a big hit with my colleagues, and I know it will be shared (and credited) with others too. To quote one colleague – “Just completed it. What a great way to engage with a subject that I often find slightly terrifying. Thank you for sharing!!!'\"", "\"This is brilliant, I love your games \""],
+    "testimonials": [
+      "This was a big hit with my colleagues, and I know it will be shared (and credited) with others too. To quote one colleague – “Just completed it. What a great way to engage with a subject that I often find slightly terrifying. Thank you for sharing!!!'\"",
+      "\"This is brilliant, I love your games \""
+    ],
     "entry_id": "ENTN_058"
   },
   "guide-to-creative-commons-licences-gid-059": {
@@ -1280,7 +1471,7 @@
     "title": "Guide to Creative Commons licences",
     "creators": "Erica Levi",
     "description": "A branching scenario activity to explore how the Creative Commons licences work, from an introduction to a deep dive into the intricacies of the licenses.",
-    "access": "https://ericalevi.coventry.domains/CClicences.html open source",
+    "access": "https://ericalevi.coventry.domains/CClicences.html",
     "delivery_format": "Online",
     "game_type": "Platform",
     "gameplay_style": "Solo",
@@ -1309,7 +1500,7 @@
     "title": "Licensing your work",
     "creators": "Erica Levi",
     "description": "It is a branching scenario that guides players through learning how to license their work through questions.",
-    "access": "https://ericalevi.coventry.domains/licensing-your-work.html open source",
+    "access": "https://ericalevi.coventry.domains/licensing-your-work.html",
     "delivery_format": "Online",
     "game_type": "Platform",
     "gameplay_style": "Solo",
