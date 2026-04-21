@@ -26,6 +26,15 @@ jobs:
           install-r: true
           use-public-rspm: true
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libuv1-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev
+
       - name: Install R dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
