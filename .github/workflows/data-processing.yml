@@ -60,6 +60,52 @@ jobs:
             libfreetype6-dev \
             libsodium-dev
 
+      - name: Ensure renv matches this R (avoid bad PPM binaries)
+        run: |
+          set -euo pipefail
+          Rscript --vanilla <<'RS'
+          target <- Sys.getenv("RENV_VERSION_PIN", unset = "1.1.8")
+
+          ok <- function() {
+            if (!requireNamespace("renv", quietly = TRUE)) return(FALSE)
+            tryCatch(
+              {
+                suppressPackageStartupMessages(loadNamespace("renv"))
+                TRUE
+              },
+              error = function(e) FALSE
+            )
+          }
+
+          if (ok()) {
+            message("renv already loadable (version ", packageVersion("renv"), ")")
+            quit(status = 0)
+          }
+
+          message("Installing renv ", target, " from CRAN source (avoids incompatible PPM binaries for renv itself) ...")
+          try(remove.packages("renv"), silent = TRUE)
+
+          archive_url <- paste0(
+            "https://cran.r-project.org/src/contrib/Archive/renv/renv_",
+            target,
+            ".tar.gz"
+          )
+          ok_install <- tryCatch(
+            {
+              install.packages(archive_url, repos = NULL, type = "source")
+              ok()
+            },
+            error = function(e) FALSE
+          )
+
+          if (!ok_install) {
+            message("Archive install failed; falling back to CRAN current renv source ...")
+            install.packages("renv", repos = "https://cloud.r-project.org", type = "source")
+          }
+
+          if (!ok()) stop("Failed to install a loadable renv for this R version")
+          RS
+
       - name: Restore R packages (renv)
         uses: r-lib/actions/setup-renv@v2
         with:
