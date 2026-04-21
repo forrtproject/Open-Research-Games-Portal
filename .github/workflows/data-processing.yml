@@ -44,15 +44,27 @@ jobs:
               RSPM = Sys.getenv("RSPM"),
               CRAN = "https://cloud.r-project.org"
             ),
-            Ncpus = max(1L, parallel::detectCores() - 1L),
-            install.packages.compile.from.source = "never"
+            Ncpus = max(1L, parallel::detectCores() - 1L)
           )
 
           Sys.setenv(USE_BUNDLED_LIBUV = "1")
 
-          if (!requireNamespace("renv", quietly = TRUE)) {
-            install.packages("renv", type = "binary")
+          install_pkg <- function(pkg) {
+            if (requireNamespace(pkg, quietly = TRUE)) return(invisible(TRUE))
+            tryCatch(
+              {
+                install.packages(pkg, type = "binary")
+                requireNamespace(pkg, quietly = TRUE)
+              },
+              error = function(e) FALSE
+            )
+            if (!requireNamespace(pkg, quietly = TRUE)) {
+              install.packages(pkg, type = "source")
+            }
+            invisible(TRUE)
           }
+
+          install_pkg("renv")
 
           renv::restore(prompt = FALSE, rebuild = "never")
           RS
