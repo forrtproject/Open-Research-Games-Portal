@@ -39,9 +39,28 @@ jobs:
             libxml2-dev
 
       - name: Restore R packages (renv)
-        uses: r-lib/actions/setup-renv@v2
-        with:
-          cache-version: 1
+        run: |
+          set -euo pipefail
+          . /etc/os-release
+          export RSPM="https://packagemanager.posit.co/cran/__linux__/${VERSION_CODENAME}/latest"
+          Rscript --vanilla <<'RS'
+          options(
+            repos = c(
+              RSPM = Sys.getenv("RSPM"),
+              CRAN = "https://cloud.r-project.org"
+            ),
+            Ncpus = max(1L, parallel::detectCores() - 1L),
+            install.packages.compile.from.source = "never"
+          )
+
+          Sys.setenv(USE_BUNDLED_LIBUV = "1")
+
+          if (!requireNamespace("renv", quietly = TRUE)) {
+            install.packages("renv", type = "binary")
+          }
+
+          renv::restore(prompt = FALSE, rebuild = "never")
+          RS
       
       # This repository is a Shiny app (not an R package), so `DESCRIPTION`
       # is typically absent. If you later add one, prefer managing deps via renv.
@@ -59,16 +78,17 @@ jobs:
           SHINYAPPS_NAME: open-research-games-portal
           SHINYAPPS_ACCOUNT: forrtapps
         run: |
-          Rscript -e "
-            rsconnect::setAccountInfo(
-              name = Sys.getenv('SHINYAPPS_ACCOUNT'),
-              token = Sys.getenv('SHINYAPPS_TOKEN'),
-              secret = Sys.getenv('SHINYAPPS_SECRET')
-            )
-            rsconnect::deployApp(
-              appName = Sys.getenv('SHINYAPPS_NAME'),
-              appDir = '.',
-              envManagement = 'none'
-            )
-          "
+          Rscript --vanilla <<'RS'
+          source("renv/activate.R")
+          rsconnect::setAccountInfo(
+            name = Sys.getenv("SHINYAPPS_ACCOUNT"),
+            token = Sys.getenv("SHINYAPPS_TOKEN"),
+            secret = Sys.getenv("SHINYAPPS_SECRET")
+          )
+          rsconnect::deployApp(
+            appName = Sys.getenv("SHINYAPPS_NAME"),
+            appDir = ".",
+            envManagement = "none"
+          )
+          RS
           
