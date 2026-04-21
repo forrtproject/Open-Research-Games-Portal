@@ -38,33 +38,24 @@ jobs:
           set -euo pipefail
           . /etc/os-release
           export RSPM="https://packagemanager.posit.co/cran/__linux__/${VERSION_CODENAME}/latest"
+          export RENV_CONFIG_REPOS_OVERRIDE="${RSPM}"
           Rscript --vanilla <<'RS'
+          rspm <- Sys.getenv("RSPM")
+          if (!nzchar(rspm)) stop("RSPM env var is empty")
+
           options(
-            repos = c(
-              RSPM = Sys.getenv("RSPM"),
-              CRAN = "https://cloud.r-project.org"
-            ),
+            repos = c(RSPM = rspm, CRAN = "https://cloud.r-project.org"),
             Ncpus = max(1L, parallel::detectCores() - 1L)
           )
 
           Sys.setenv(USE_BUNDLED_LIBUV = "1")
 
-          install_pkg <- function(pkg) {
-            if (requireNamespace(pkg, quietly = TRUE)) return(invisible(TRUE))
-            tryCatch(
-              {
-                install.packages(pkg, type = "binary")
-                requireNamespace(pkg, quietly = TRUE)
-              },
-              error = function(e) FALSE
-            )
-            if (!requireNamespace(pkg, quietly = TRUE)) {
-              install.packages(pkg, type = "source")
-            }
-            invisible(TRUE)
+          if (!requireNamespace("renv", quietly = TRUE)) {
+            install.packages("renv", repos = getOption("repos"), dependencies = TRUE)
           }
-
-          install_pkg("renv")
+          if (!requireNamespace("renv", quietly = TRUE)) {
+            stop("Failed to install/load renv")
+          }
 
           renv::restore(prompt = FALSE, rebuild = "never")
           RS
