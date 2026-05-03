@@ -5,7 +5,7 @@ library(tidyr)
 library(googlesheets4)
 library(stringr)
 
-# ----- Reading in data from both forms, anonimizing, and combining
+# Reading in data from both forms, anonymizing, and combining
 
 # Read in data from New Entries form
 google_sheet_url_ne <- "https://docs.google.com/spreadsheets/d/1GCInWJYzSmFEob4lKhdtFW6nnoGf_p5lWajdTE285v4/edit"
@@ -31,7 +31,7 @@ names(df_a_anonymous) == names(df_ne_anonymous) # Check if all correct
 # Combine data
 df_combined <- rbind(df_ne_anonymous, df_a_anonymous)
 
-# ----- Data cleaning
+# Data cleaning
 
 # Remove explanations of Clusters
 df_combined$`FORRT clusters` <-  str_replace_all(df_combined$`FORRT clusters`, c(
@@ -70,7 +70,7 @@ Portal <- Portal %>% filter(.data[["Entry ID"]] %in% permissions)
 Portal <- Portal[order(Portal$`Game ID`), ]
 
 
-# ----- Combine entries of the same game in one row
+# Combine entries of the same game in one row
 
 # Create new dataframe & delete duplicate information for same game
 df <- Portal %>%
