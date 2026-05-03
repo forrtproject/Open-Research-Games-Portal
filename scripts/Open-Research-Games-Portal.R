@@ -16,17 +16,33 @@ google_sheet_csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5Rj
 # Try different methods to read the data
 df_combined <- NULL
 
-# CSV export (most reliable)
-cat("Attempting to read from CSV export (TEST sheet)...\n")
+# CSV export (most reliable): default published sheet from the workbook
+cat("Attempting to read from CSV export (published default sheet)...\n")
 tryCatch({
-  # TEST sheet
-  test_csv_url <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/pub?gid=610093275&single=true&output=csv"
-  df_combined <- read.csv(test_csv_url, stringsAsFactors = FALSE)
-  cat("Successfully read", nrow(df_combined), "rows and", ncol(df_combined), "columns from CSV export (TEST sheet)\n")
+  df_combined <- read.csv(google_sheet_csv_url, stringsAsFactors = FALSE)
+  cat("Successfully read", nrow(df_combined), "rows and", ncol(df_combined),
+      "columns from:", google_sheet_csv_url, "\n")
   cat("Columns read:", names(df_combined), "\n")
 }, error = function(e) {
-  cat("CSV export failed:", e$message, "\n")
+  cat("Default published CSV failed:", e$message, "\n")
 })
+
+# Fallback: explicit TEST tab (gid may differ if sheet order changes)
+if (is.null(df_combined)) {
+  test_csv_url <- paste0(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRxW5RjnjrJ7KtLo3o8yRjXS8fr3bKOyOwUE_k1b8cN2LRpwkCY3i6Cgo7dZBVFQuyfVywEymMlXRTM/",
+    "pub?gid=610093275&single=true&output=csv"
+  )
+  cat("Attempting CSV export (TEST sheet by gid)...\n")
+  tryCatch({
+    df_combined <- read.csv(test_csv_url, stringsAsFactors = FALSE)
+    cat("Successfully read", nrow(df_combined), "rows and", ncol(df_combined),
+        "columns from TEST sheet CSV\n")
+    cat("Columns read:", names(df_combined), "\n")
+  }, error = function(e) {
+    cat("TEST sheet CSV failed:", e$message, "\n")
+  })
+}
 
 # Google Sheets API without authentication (if CSV failed)
 if (is.null(df_combined)) {
@@ -61,6 +77,18 @@ if (is.null(df_combined)) {
 names(df_combined) <- tolower(gsub("[^A-Za-z0-9_]", "_", names(df_combined)))
 names(df_combined) <- gsub("_+", "_", names(df_combined))
 names(df_combined) <- gsub("^_|_$", "", names(df_combined))
+
+# Sheet header "Access(only_link)" sanitizes to access_only_link; JSON expects access
+if ("access_only_link" %in% names(df_combined)) {
+  if (!"access" %in% names(df_combined)) {
+    names(df_combined)[names(df_combined) == "access_only_link"] <- "access"
+  } else {
+    al <- trimws(as.character(df_combined$access_only_link))
+    ac <- trimws(as.character(df_combined$access))
+    df_combined$access <- ifelse(nzchar(al), al, ac)
+    df_combined$access_only_link <- NULL
+  }
+}
 
 # Clean and prepare the data
 Portal <- df_combined

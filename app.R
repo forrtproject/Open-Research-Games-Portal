@@ -64,6 +64,24 @@ games_df <- bind_rows(lapply(names(games_data), function(slug) {
   return(game_row) # nolint
 }))
 
+# True only for a usable external URL (avoids href="N/A" and empty strings)
+has_valid_access_url <- function(x) {
+  if (is.null(x)) {
+    return(FALSE)
+  }
+  if (length(x) != 1L) {
+    return(FALSE)
+  }
+  if (is.na(x)) {
+    return(FALSE)
+  }
+  s <- trimws(as.character(x))
+  if (!nzchar(s) || identical(toupper(s), "N/A")) {
+    return(FALSE)
+  }
+  grepl("^https?://", s, ignore.case = TRUE)
+}
+
 # UI
 ui <- tagList(
   # scroll to top button functionality
@@ -712,10 +730,10 @@ output$games_cards <- renderUI({
 
                 # Card footer with buttons
               div(class = "game-card-footer",
-                    if (!is.null(game$access) && !is.na(game$access) &&
-                          nchar(as.character(game$access)) > 0) {
-                      a(href = game$access,
+                    if (has_valid_access_url(game$access)) {
+                      a(href = trimws(as.character(game$access)),
                         target = "_blank",
+                        rel = "noopener noreferrer",
                         class = "btn-play",
                         style = "font-size: 1.2rem;",
                         icon("play-circle"),
@@ -861,9 +879,10 @@ output$games_cards <- renderUI({
           },
           
           footer = tagList(
-            if (!is.null(game_data$access) && !is.na(game_data$access) && 
-                nchar(as.character(game_data$access)) > 0) {
-              a(href = game_data$access, target = "_blank", 
+            if (has_valid_access_url(game_data$access)) {
+              a(href = trimws(as.character(game_data$access)),
+                target = "_blank",
+                rel = "noopener noreferrer",
                 class = "btn btn-success",
                 icon("play"), " Play This Game")
             },
