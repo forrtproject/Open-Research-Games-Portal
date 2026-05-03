@@ -1,6 +1,6 @@
-# [Open Research Games Portal](https://forrtapps.shinyapps.io/open-research-games-portal/)
+# [Open Research Games Portal](https://forrt.org/open-research-games-portal/)
 
-Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features 30 ++  educational games that make complex research concepts accessible and engaging.
+Welcome to the Open Research Games Portal - your gateway to learning open science through play! Our curated collection features 45 ++  educational games that make complex research concepts accessible and engaging.
 
 ### Discover & Play
 
@@ -20,32 +20,44 @@ Welcome to the Open Research Games Portal - your gateway to learning open scienc
 
 Ready to transform your understanding of open science? Let's play and learn together!
 
-Shinny App Available [here](https://forrtapps.shinyapps.io/open-research-games-portal/)
+Shiny app: [https://forrt.org/open-research-games-portal/](https://forrt.org/open-research-games-portal/)
 
 ## Installation & Usage
 
-### Prerequisites
-```r
-# Required packages
-install.packages(c("shiny", "shinydashboard", "DT", "jsonlite", "dplyr"))
+Use the **repository root** as the working directory (the folder that contains `app.R` and `data/`).
 
+### Prerequisites
+
+**Run the Shiny app** — install:
+
+```r
+install.packages(c("shiny", "shinydashboard", "DT", "jsonlite", "dplyr"))
 ```
 
-### Running the App
-```r
-# Set working directory to the cloned repository root (replace with your path)
-setwd("/path/to/Open-Research-Games-Portal")
+**Regenerate `data/open_research_games.json` from Google Sheets** (optional) — the script in `scripts/` also needs:
 
-# Run the app
+```r
+install.packages(c("googlesheets4", "tidyr", "stringr", "readxl"))
+```
+
+### Running the app
+
+```r
+setwd("/path/to/Open-Research-Games-Portal")  # repository root
 shiny::runApp()
 ```
 
-### Updating Data
-1. Update the Google Sheets with new games
-2. Run the R script to regenerate JSON:
+### Refreshing data from Google Sheets
+
+1. Update the [Google Sheet](https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing). Use the **Access(only_link)** column for play URLs; the export script maps that to the **`access`** field in `data/open_research_games.json`.
+2. From the **repository root**, run:
+
 ```r
-source("Open-Research-Games-Portal.R")
+source("scripts/Open-Research-Games-Portal.R")
 ```
+
+The script reads the published CSV (see URLs and fallbacks inside the script) and writes `data/open_research_games.json`. Restart or redeploy the app to pick up changes.
+
 For more information, contact **[info@forrt.org](mailto:info@forrt.org)**.  
 
 This work is part of the **[Framework for Open and Reproducible Research Training (FORRT) Project](https://forrt.org)**.

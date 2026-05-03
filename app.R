@@ -357,14 +357,14 @@ ui <- tagList(
           # How to Use
           h4(icon("compass"), " How to Use This Portal"),
             tags$ul(
-            tags$li(strong("Browse:"), " Explore all games using the interactive cards"), # nolint
-            tags$li(strong("Filter:"), " Use FORRT cluster and gameplay style filters to find relevant games"), # nolint
-            tags$li(strong("Search:"), " Enter keywords to find specific games by title, topics, or content"), # nolint
-            tags$li(strong("Play:"), " Click 'Play Now' to start gaming immediately"), # nolint
-            tags$li(strong("Learn More:"), " Click 'Details' to see comprehensive game information"), # nolint
+            tags$li(strong("Browse:"), " Explore all games using the interactive cards"),
+            tags$li(strong("Filter:"), " Use FORRT cluster and gameplay style filters to find relevant games"),
+            tags$li(strong("Search:"), " Enter keywords to find specific games by title, topics, or content"),
+            tags$li(strong("Play:"), " Click 'Play Now' to start gaming immediately"),
+            tags$li(strong("Learn More:"), " Click 'Details' to see comprehensive game information"),
             tags$li(strong("Export:"), " Download the complete database from the ", 
                 tags$a(href = "https://docs.google.com/spreadsheets/d/1cmydWjD1OuyKxJVfDlv0N3T474zwymfB04yFDZQO-TY/edit?usp=sharing", 
-                     "Google Sheet Portal", target = "_blank")) # nolint
+                     "Google Sheet Portal", target = "_blank"))
             ),
             hr()
           ),
@@ -425,10 +425,10 @@ ui <- tagList(
         box-shadow: 0 2px 8px rgba(0,0,0,0.04); font-size: 1.5rem;",
         
         h4(icon("link"), " Links & Resources"),
-        tags$a(href = "https://forrtapps.shinyapps.io/open-research-games-portal/",  # nolint
+        tags$a(href = "https://forrt.org/open-research-games-portal/",
                target = "_blank",
                icon("external-link-alt"), " Live App"),
-        tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",  # nolint
+        tags$a(href = "https://github.com/forrtproject/Open-Research-Games-Portal",
                target = "_blank",
                icon("github"), " GitHub"),
         tags$a(href = "mailto:info@forrt.org",
@@ -437,7 +437,7 @@ ui <- tagList(
         tags$a(href = "https://forrt.org",
                target = "_blank",
                "FORRT Project"),
-        tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",  # nolint
+        tags$a(href = "https://join.slack.com/t/forrt/shared_invite/zt-alobr3z7-NOR0mTBfD1vKXn9qlOKqaQ",
                target = "_blank",
                "Slack")
       ),
