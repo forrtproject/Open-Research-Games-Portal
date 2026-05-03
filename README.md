@@ -33,8 +33,8 @@ install.packages(c("shiny", "shinydashboard", "DT", "jsonlite", "dplyr"))
 
 ### Running the App
 ```r
-# Set working directory
-setwd("/Users/rdm/Desktop/oss/Open-Research-Games-Portal")
+# Set working directory to the cloned repository root (replace with your path)
+setwd("/path/to/Open-Research-Games-Portal")
 
 # Run the app
 shiny::runApp()
