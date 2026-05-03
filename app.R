@@ -64,22 +64,25 @@ games_df <- bind_rows(lapply(names(games_data), function(slug) {
   return(game_row) # nolint
 }))
 
-# True only for a usable external URL (avoids href="N/A" and empty strings)
-has_valid_access_url <- function(x) {
-  if (is.null(x)) {
-    return(FALSE)
-  }
-  if (length(x) != 1L) {
-    return(FALSE)
-  }
-  if (is.na(x)) {
-    return(FALSE)
+# First http(s) URL in Access field (handles "Blog post: https://... Materials: ...")
+extract_first_http_url <- function(x) {
+  if (is.null(x) || length(x) != 1L || is.na(x)) {
+    return(NA_character_)
   }
   s <- trimws(as.character(x))
   if (!nzchar(s) || identical(toupper(s), "N/A")) {
-    return(FALSE)
+    return(NA_character_)
   }
-  grepl("^https?://", s, ignore.case = TRUE)
+  m <- regexpr("https?://[^[:space:]]+", s, ignore.case = TRUE)
+  if (m[1L] == -1L) {
+    return(NA_character_)
+  }
+  url <- regmatches(s, m)[1L]
+  sub("[.,;\\)\\]\\\"']+$", "", url)
+}
+
+has_valid_access_url <- function(x) {
+  !is.na(extract_first_http_url(x))
 }
 
 # UI
@@ -731,7 +734,7 @@ output$games_cards <- renderUI({
                 # Card footer with buttons
               div(class = "game-card-footer",
                     if (has_valid_access_url(game$access)) {
-                      a(href = trimws(as.character(game$access)),
+                      a(href = extract_first_http_url(game$access),
                         target = "_blank",
                         rel = "noopener noreferrer",
                         class = "btn-play",
@@ -880,7 +883,7 @@ output$games_cards <- renderUI({
           
           footer = tagList(
             if (has_valid_access_url(game_data$access)) {
-              a(href = trimws(as.character(game_data$access)),
+              a(href = extract_first_http_url(game_data$access),
                 target = "_blank",
                 rel = "noopener noreferrer",
                 class = "btn btn-success",
